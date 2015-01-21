@@ -17,7 +17,7 @@ A lightweight Javascript / CSS framework.
 
 ## License
 
-[http://en.wikipedia.org/wiki/MIT_License](MIT License).
+[MIT License](http://en.wikipedia.org/wiki/MIT_License).
 
 ## Contributions
 

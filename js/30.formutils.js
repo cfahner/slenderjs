@@ -16,11 +16,8 @@ $(document).on("change input paste keyup", DELAYED_TEXTCHANGE_SELECTOR, function
 		if ($self.val() == $self.data("sl-last-confirm")) { return; }
 		$self.data("sl-last-confirm", $self.val());
 		$self.trigger("delaytextchange");
-		console.log("delaytextchange: " + $self.val());
 	}, 500));
 });
-
-console.log("defined delaytextchange");
 
 // in case jQuery.val() is called, the last-confirm is updated
 $.valHooks.text = { set: function (el, val) { $(el).data("sl-last-confirm", val); } };

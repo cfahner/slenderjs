@@ -1,6 +1,6 @@
 
 var $LOADING = $("<div class=sl-tmid><div class='sl-ind sl-ind-load'></div></div>");
-var $ERROR = $("<div class=sl-tmid><div class='sl-ind sl-ind-load'></div></div>");
+var $ERROR = $("<div class=sl-tmid><div class='sl-ind sl-ind-error'></div></div>");
 
 // A reference to the currently active popup (there can only be one)
 var $activePopup;

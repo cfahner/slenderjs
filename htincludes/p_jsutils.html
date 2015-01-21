@@ -1,0 +1,57 @@
+<div class="sl-mwidth sl-mid">
+	<div class=sl-block>
+		<h2 class=sl-tmono>.sl-nojs</h2>
+		<p>
+			Elements with the <code>sl-nojs</code> class are removed when javascript
+			is enabled (and stay visible if disabled).<br>
+			<button class="sl-btn sl-nojs">noscript only button</button>
+		</p>
+		<h2>The <span class=sl-tmono>delaytextchange</span> event</h2>
+		<p>
+			All elements that match <code>input, select, textarea</code>
+			receive a <code>delaytextchange</code> event after the user changes
+			the value of the input and a certain (typing) delay has expired.
+			When another change happens in between that delay, the delay will
+			be renewed.
+		</p>
+		<p>
+			<input name=delayvalue class="sl-input" id=jsutil-input value="Change me">
+			<div id=jsutil-output class=sl-padding style="color: #0090ff;">Waiting for input..</div>
+		</p>
+		<h2>
+			<span class=sl-tmono>.sl-autosubmit</span> and
+			<span class=sl-tmono>.sl-autosubmit-delay</span>
+		</h2>
+		<p>
+			The <code>.sl-autosubmit</code> class can be used to automatically
+			submit the <a href="http://api.jquery.com/closest/">closest</a>
+			form. When the <code>change</code> event is triggered on these
+			elements, they will automatically submit that form.
+		</p>
+		<p>
+			The <code>.sl-autosubmit-delay</code> class does the same thing,
+			except this class relies upon the <code>delaytextchange</code>
+			event described above.
+		</p>
+		<form method=get action="?_=" id=jsutil-mansubmit>
+			<input type=hidden name=p value=jsutils>
+			<input class="sl-input sl-autosubmit" name=changevalue value="Change me">
+			<input class="sl-input sl-autosubmit-delay" name=delayvalue value = "Change me and wait">
+			<button class="sl-btn sl-action-do" type=submit>Submit manually</button>
+		</form>
+	</div>
+</div>
+
+<script>
+
+$(document).ready(function () {
+	$("#jsutil-input").on("delaytextchange", function () {
+		$("#jsutil-output").text($(this).val());
+	});
+	$("#jsutil-mansubmit").submit(function (e) {
+		alert("Submitted!");
+		e.preventDefault();
+	});
+});
+
+</script>

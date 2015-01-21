@@ -1,0 +1,87 @@
+<div class="sl-mwidth sl-mid">
+	<div class=sl-block>
+		<h3>Basic buttons</h3>
+		<p>Enhance elements to appear like a button by adding the CSS class
+		<code>sl-btn</code> to it. For color input types, you should add a style
+		attribute defining a min-width (<code>style="min-width:50px;"</code>)
+		to prevent collapse of it's width to near invisibility.</p>
+		<button class=sl-btn>Button</button>
+		<button class=sl-btn disabled>Disabled button</button>
+		<input class=sl-btn type=button value="Input button">
+		<input class=sl-btn type=button disabled value="Disabled input button">
+		<input class=sl-btn type=submit value="Submit input button">
+		<input class=sl-btn type=reset value="Reset input button">
+		<input class=sl-btn type=color placeholder="Color input" value="#0090ff" style="min-width:50px;">
+		<input class=sl-btn type=color placeholder="Disabled color input" value="#0090ff" style="min-width:50px;" disabled>
+		<div class=sl-btn>Div button</div>
+		<div class="sl-btn sl-disabled">Disabled div button</div>
+		<span class=sl-btn>Span button</span>
+		<a href="#" class=sl-btn>Link button</a>
+		<a class=sl-btn>Link button without href</a>
+		<select class=sl-select><option>Select</option></select>
+		
+		<h3>Action buttons</h3>
+		<p>Further enhance buttons by adding action classes to them, indicating
+		these buttons perform special actions by adding a color.</p>
+		
+		<h4 class=sl-tmono>.sl-action-do</h4>
+		<p>Add the <code>sl-action-do</code> class to buttons that immediately
+		perform an action without asking for confirmation (or are confirmation
+		buttons themselves).</p>
+		<button class="sl-btn sl-action-do">Button</button>
+		<button class="sl-btn sl-action-do" disabled>Disabled button</button>
+		<input class="sl-btn sl-action-do" type=submit value="Submit input button">
+		<input class="sl-btn sl-action-do" type=color value="#ffffff" style="min-width:50px;">
+		<a href=# class="sl-btn sl-action-do">Link button</a>
+		<select class="sl-select sl-action-do"><option>Select</option></select>
+		
+		<h4 class=sl-tmono>.sl-action-danger</h4>
+		<p>Add the <code>sl-action-danger</code> class to buttons to indicate
+		that this button performs a dangerous action (such as permanent removal
+		of an item).</p>
+		<button class="sl-btn sl-action-danger">Button</button>
+		<button class="sl-btn sl-action-danger" disabled>Disabled button</button>
+		<input class="sl-btn sl-action-danger" type=submit value="Submit input button">
+		<input class="sl-btn sl-action-danger" type=reset value="Reset input button">
+		<input class="sl-btn sl-action-danger" type=color value="#ffffff" style="min-width:50px;">
+		<a href=# class="sl-btn sl-action-danger">Link button</a>
+		<select class="sl-select sl-action-danger"><option>Select</option></select>
+		
+		<h3>Buttons with icons</h3>
+		<button class=sl-btn><span class="sl-ic sl-ic-plus"></span> Plus</button>
+		<a href="#" class="sl-btn sl-action-do"><span class="sl-ic sl-ic-plus"></span> Action do</a>
+		<button class=sl-btn><span class="sl-ic sl-ic-cross"></span> Cross</button>
+		<button class="sl-btn sl-action-danger">Action danger <i class="sl-ic sl-ic-cross"></i></button>
+		
+		<h3>Flat buttons</h3>
+		<p>Buttons can also be 'flat'. These buttons do not have any styling
+		other than the default button margins and padding. Use <code>sl-flat</code>
+		to create a flat button.</p>
+		<button class=sl-btn>Normal button</button>
+		<button class=sl-flat>Flat</button>
+		<a href="#" class=sl-flat>Link</a>
+		<button class=sl-flat><i class="sl-ic sl-ic-plus"></i> With icon</button>
+		<button class="sl-flat sl-action-do">Flat sl-action-do</button>
+		<button class="sl-flat sl-action-danger">Flat sl-action-danger</button>
+		<select class=sl-flat><option>Flat select</option></select>
+		
+		<h3>Fullwidth buttons</h3>
+		<p>Buttons can forced to 100% width by using the <code>sl-w-fill</code>
+		class.</p>
+		<button class="sl-btn sl-w-fill">Button</button>
+		<select class="sl-select sl-w-fill"><option>Select</option></select>
+		<input class="sl-btn sl-w-fill" type=color value="#0090ff">
+		<button class="sl-btn sl-w-fill sl-action-do">Button</button>
+		<p>A class called <code>sl-w-fill-mobile</code> will make buttons
+		stretch only on small screens. This will make multiple buttons appear
+		next to each other on medium-large screens and stacked on small screens.</p>
+		<button class="sl-btn sl-w-fill-mobile">Button</button>
+		<select class="sl-select sl-w-fill-mobile"><option>Select</option></select>
+		
+		<h3>Unstyled buttons</h3>
+		Not adding the <code>sl-btn</code> class will keep their default style.
+		<button>Button</button>
+		<input type=color>
+		<select><option>Select</option></select>
+	</div>
+</div>

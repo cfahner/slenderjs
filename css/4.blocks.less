@@ -1,0 +1,42 @@
+.sl-margins, .sl-block { margin: @sl-block-margins-v @sl-block-margins-h; }
+.sl-padding, .sl-block { padding: @sl-block-padding; }
+.sl-block-styled, .sl-block {
+	background: @sl-block-background;
+	box-shadow: @sl-block-shadow;
+}
+
+/* Constrains an element to a predefined max. content width. */
+.sl-mwidth { max-width: @sl-content-width; }
+/* Centers block elements. */
+.sl-mid {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+@sl-w-names:
+	"10", "sixth", "20", "25", "30", "third",
+	"40", "50", "60", "2thirds",
+	"70", "75", "80", "5sixths", "90", "fill";
+@sl-w-vals:
+	"10%", "16.6666%", "20%", "25%", "30%", "33.3333%",
+	"40%", "50%", "60%", "66.6666%",
+	"70%", "75%", "80%", "83.3333%", "90%", "100%";
+
+/**
+ * Generator for the .sl-w classes.
+ * <p>.sl-w-auto and .sl-w-fill-mobile need to be added manually since they may
+ * not apply to everything.</p>
+ * Usage: { something, something } .sl-w- { .sl-wgen(); }
+ */
+.sl-wgen(@i : length(@sl-w-names)) when (@i > 0) {
+	@name: e(extract(@sl-w-names, @i));
+	@val: e(extract(@sl-w-vals, @i));
+	&@{name} { width: @val; }
+	.sl-wgen((@i - 1));
+}
+/** width auto and fill mobile */
+.sl-w-auto { width: auto; }
+.sl-w-fill-mobile { width: 100%; }
+@media (min-width: @sl-breakpoint-medium) {
+	.sl-w-fill-mobile { width: auto; }
+}

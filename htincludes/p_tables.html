@@ -1,0 +1,67 @@
+<div class="sl-mwidth sl-mid sl-grid">
+	<div class=sl-w-50><div class=sl-block>
+		<h2>Tables</h2>
+		<p>There is no good CSS only "fix" for automagically responsive tables.
+		The closest to an "automagic" solution I could find was this:
+		<a href=http://css-tricks.com/responsive-data-tables>css-tricks.com/responsive-data-tables</a>.</p>
+		<h3>An attempt</h3>
+		<p>This attempt requires custom CSS to set the content of the ":before"
+		pseudo element to the column heading text. In this example:</p>
+		<pre>
+@media (max-width: 65em) {
+	#MyCustomTable td:nth-of-type(1):before { content: "First name"; }
+	#MyCustomTable td:nth-of-type(2):before { content: "Last name"; }
+	#MyCustomTable td:nth-of-type(3):before { content: "Gender"; }
+}
+		</pre>
+		<style>
+		@media (max-width: 65em) {
+			#MyCustomTable td:nth-of-type(1):before { content: "First name"; }
+			#MyCustomTable td:nth-of-type(2):before { content: "Last name"; }
+			#MyCustomTable td:nth-of-type(3):before { content: "Gender"; }
+		}
+		</style>
+		<table id=MyCustomTable class=sl-table>
+			<caption>#MyCustomTable</caption>
+			<thead>
+				<tr>
+					<th>First name</th>
+					<th>Last name</th>
+					<th>Gender</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>John</td>
+					<td>Smith</td>
+					<td>
+						<div class="sl-input-dual">
+							<div>
+								<input class=sl-radio name=johnsmith type=radio id=johnsmithM>
+								<label class="sl-lbl sl-seamless" for=johnsmithM>M</label>
+							</div><div>
+								<input class=sl-radio name=johnsmith type=radio id=johnsmithF>
+								<label class="sl-lbl sl-seamless" for=johnsmithF>F</label></td>
+							</div>
+						</div>
+				</tr>
+				<tr>
+					<td>Suzan</td>
+					<td>Jones</td>
+					<td><select class="sl-select sl-seamless">
+						<option>Male</option>
+						<option selected>Female</option>
+					</select></td>
+				</tr>
+				<tr>
+					<td>Master</td>
+					<td>Chief</td>
+					<td>
+						<input class=sl-checkbox type=checkbox id=MasterChiefWithEggs>
+						<label class="sl-lbl sl-seamless" for=MasterChiefWithEggs>Eggs</label>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div></div>
+</div>

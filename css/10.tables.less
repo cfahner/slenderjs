@@ -1,0 +1,58 @@
+table.sl-table {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+table.sl-table td, table.sl-table th {
+	border: 1px solid @sl-color-do;
+	padding: .05em .2em;
+}
+table.sl-table th {
+	background-color: @sl-color-do;
+	color: contrast(@sl-color-do);
+}
+
+@media (max-width: 65em) {
+	table.sl-table, table.sl-table thead, table.sl-table tbody, table.sl-table th,
+	table.sl-table td, table.sl-table tr {
+		display: block;
+	}
+	
+	/* Slightly better legibility for smaller devices */
+	table.sl-table td, table.sl-table th {
+		padding: .15em .5em;
+		font-size: 16px;
+	}
+	
+	/* hide table headers (no display:none, accessibility!) */
+	table.sl-table thead tr {
+		position: absolute;
+		top: -1000em;
+		left: -1000em;
+	}
+	
+	table.sl-table tr {
+		border: 1px solid @sl-color-do;
+		border-bottom: 0;
+		margin: .5em 0;
+	}
+	
+	table.sl-table td {
+		/* pretend to be a row */
+		border: none;
+		border-bottom: 1px solid @sl-color-do;
+		position: relative;
+		padding-left: 50%;
+	}
+	
+	table.sl-table td:before {
+		/* pretend to be a table header */
+		position: absolute;
+		/* top/left values should mimic padding */
+		top: .15em;
+		left: .5em;
+		width: 45%;
+		padding-right: 10px;
+		white-space: nowrap;
+	}
+}

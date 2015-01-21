@@ -1,0 +1,37 @@
+<div class="sl-mwidth sl-mid">
+	<div class=sl-block>
+		<h2>Custom Javascript Views</h2>
+		<p>A framework for custom views that enhance the DOM from javascript.</p>
+		<p>
+			Custom views are defined from script using a unique name and
+			descriptor object as follows:
+		</p>
+		<pre>
+Slender.defineView("Slender.ViewName", {
+
+	// Override
+	onEnhance: function () {
+		// Enhance the DOM from this method, this.element is a jQuery object
+		this._oldContent = this.element.html();
+		this.element.text("Enhanced");
+	},
+
+	// Override
+	onRestore: function () {
+		// Restore the DOM from this method
+		this.element.html(this._oldContent);
+	}
+
+});
+		</pre>
+		<p>
+			The view <code>Slender.TestView</code> is always available. It sets
+			the elements' text to "Enhanced" and "Restored". It is shown below
+			and is only used for testing. To activate the custom view framework,
+			add a <code>data-view="Namespace.Name"</code> attribute to an
+			element and the framework will do the rest.
+		</p>
+		<hr>
+		<div data-view="Slender.TestView">Unenhanced</div>
+	</div>
+</div>

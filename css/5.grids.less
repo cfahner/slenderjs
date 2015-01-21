@@ -1,0 +1,17 @@
+.sl-grid {
+	.sl-clear();
+	display: block;
+}
+.sl-grid > [class^=sl-w-] {
+	display: block;
+	float: left;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	width: 100%;
+	min-height: 1px;
+}
+
+@media (min-width: @sl-breakpoint-large) {
+	.sl-grid > .sl-w- { .sl-wgen(); }
+}

@@ -1,0 +1,139 @@
+/***** checkboxes and radiogroup specific styling *****/
+/* hide default checkbox and radio button, this needs to be done in such a way
+ * that the screen does not scroll away from the current focus when the
+ * checkbox/radio is clicked, that the checkbox/radio is still focusable and
+ * accessible (= no display:none;).
+ * The standard checkbox/radio is usually very difficult to style, so the
+ * label next to it is styled instead to look like a checkbox/radio.
+ */
+/*
+ * To enhance radio buttons and checkboxes, the default input is hidden and the
+ * LABEL next to it is made to appear like a checkbox or radio button instead.
+ * "display: none;" can't be used - it will prevent keyboard accessibility
+ * Can't set the widths/heights to zero because FF will always display a tiny
+ * checkbox/radio (even with "-moz-apearance: none;").
+ * Can't position the element outside of the viewport (using "top: -99999px;"
+ * for example) because it scrolls the page to the top when focused.
+ */
+.sl-checkbox, .sl-radio {
+	/* break it's flow so it does not take any space from the label sibling */
+	position: absolute;
+	/* make it fully transparent */
+	opacity: 0;
+}
+/* Prevent unintended selection of the label text while checking/unchecking. */
+.sl-checkbox + .sl-lbl, .sl-radio + .sl-lbl {
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	cursor: pointer;
+}
+/** Generic style of the checkbox or radio box. */
+.sl-checkbox + .sl-lbl:before, .sl-radio + .sl-lbl:before {
+	margin: 0;
+	display: inline-block;
+	content: ' ';
+	width: @sl-checkable-box-size;
+	height: @sl-checkable-box-size;
+	line-height: @sl-checkable-box-size;
+	text-align: center;
+	font-family: monospace; /* consistent font */
+	font-size: 1.8em;
+	margin: 0 .33em;
+	font-weight: bold;
+	color: @sl-color-do;
+	border: @sl-widget-border-width solid darken(@sl-input-border-color, 5);
+	vertical-align: middle;
+	transition: border .1s, background .1s;
+}
+/* Make the radio box round. */
+.sl-radio + .sl-lbl:before { border-radius: 1000em !important; }
+/* Checkbox displays a checkmark when checked, radio displays a filled circle. */
+.sl-checkbox:checked + .sl-lbl:before { content: '✓'; }
+.sl-radio:checked + .sl-lbl:before { content: '•'; }
+/* Cursor and opacity for disabled checkables. */
+.sl-checkbox:disabled + .sl-lbl, .sl-radio:disabled + .sl-lbl {
+	cursor: default;
+	opacity: @sl-widget-disabled-opacity;
+}
+
+/* Hover style. */
+.sl-checkbox + .sl-lbl:hover:before, .sl-radio + .sl-lbl:hover:before {
+	border-color: darken(@sl-input-border-color, 30);
+}
+/* Focus style. */
+.sl-checkbox:focus + .sl-lbl:before, .sl-radio:focus + .sl-lbl:before {
+	border-color: @sl-color-do;
+}
+/* Pressed style. */
+.sl-checkbox + .sl-lbl:active:before, .sl-radio + .sl-lbl:active:before {
+	background-color: fade(@sl-color-do, 50);
+}
+
+/* Switch CSS
+ * ===
+ * Switches are only enhanced when javascript is enabled. Otherwise they behave
+ * like 2-option SELECT elements (which appear as buttons).
+ * To detect switches being added to the page, use the slNodeInserted animation
+ * defined in "page.less".
+ */
+body select.sl-switch {
+	-webkit-animation: slNodeInserted 1ms;
+	animation: slNodeInserted 1ms;
+}
+.sl-switch-enh {
+	text-align: left;
+	text-align: start;
+}
+.sl-switch-enh .sl-switch-space {
+	padding-right: .75em;
+}
+.sl-switch-enh .sl-switch-flip {
+	display: inline-block;
+	position: relative;
+	width: 2.7em;
+	height: .75em;
+	background-color: @sl-button-background-color;
+	border: @sl-widget-border-width solid @sl-button-border-color;
+	border-radius: 100em;
+	vertical-align: middle;
+}
+.sl-switch-enh .sl-switch-flip.sl-switch-flip-on {
+	background-color: @sl-color-do;
+	border-color: darken(@sl-color-do, 5);
+}
+.sl-switch-enh .sl-switch-flip:before {
+	position: absolute;
+	display: inline-block;
+	content: " ";
+	width: 1.3em;
+	height: 1.3em;
+	top: -.5em;
+	left: -1 * @sl-widget-border-width;
+	background-color: lighten(@sl-button-background-color, 5);
+	border: @sl-widget-border-width solid @sl-button-border-color;
+	border-radius: 100em;
+	box-shadow: 0 1px fadeout(@sl-widget-shadow-color, @sl-widget-shadow-fadeout-idle);
+	vertical-align: top;
+	transition: border .1s;
+}
+.sl-switch-enh .sl-switch-flip.sl-switch-flip-on:before {
+	left: auto;
+	right: -1 * @sl-widget-border-width;
+	border-color: @sl-color-do;
+}
+/* Disabled switches. */
+.sl-switch:disabled + .sl-switch-enh {
+	cursor: default;
+	opacity: @sl-widget-disabled-opacity;
+}
+
+/* HOVER style */
+.sl-switch-enh:hover .sl-switch-flip:before {
+	border-color: darken(@sl-button-border-color, 20);
+	box-shadow: 0 1px fadeout(@sl-widget-shadow-color, @sl-widget-shadow-fadeout-hover);
+}
+

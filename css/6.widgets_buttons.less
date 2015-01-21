@@ -1,0 +1,116 @@
+/* apply a consistent layout to all widgets (buttons, input and other formcontrols) */
+.sl-btn, .sl-flat, .sl-select, .sl-switch, .sl-input, .sl-range, .sl-lbl {
+	background: transparent;
+	display: inline-block;
+	margin: @sl-widget-margin-v 0;
+	padding: @sl-widget-padding-v @sl-widget-padding-h;
+	font: inherit; /* not all browsers use a consistent font for all input elements */
+	line-height: inherit;
+	height: @sl-widget-height;
+	overflow: hidden; /* only IE8/9/10/11 applies this by default */
+	text-transform: none; /* is not always inherited correctly (FF, IE8/9/10/11, O) */
+	text-decoration: none;
+	border: @sl-widget-border-width solid transparent;
+	border-radius: @sl-widget-border-radius;
+	white-space: nowrap; /* single line of text */
+	text-overflow: ellipsis;
+	outline: none;
+	vertical-align: middle;
+	transition: background .1s, border .1s, color .1s;
+}
+/* Apply auto width without triggering specificity (a.sl-btn) */
+.sl-btn, .sl-flat, .sl-select, .sl-switch, .sl-input, .sl-range, .sl-lbl { width: auto; }
+/* center normal button text */
+.sl-btn, .sl-flat { text-align: center; }
+/* Fullwidth buttons */
+.sl-btn.sl-w-fill, .sl-btn.sl-w-fill-mobile,
+.sl-flat.sl-w-fill, .sl-flat.sl-w-fill-mobile,
+.sl-select.sl-w-fill, .sl-select.sl-w-fill-mobile,
+.sl-switch.sl-w-fill, .sl-switch.sl-w-fill-mobile,
+.sl-lbl.sl-w-fill, .sl-lbl.sl-w-fill-mobile {
+	width: 100%;
+}
+/* Flat buttons should have transparent background by default */
+.sl-flat, a.sl-flat { background: transparent; }
+
+@media (min-width: @sl-breakpoint-large) {
+	.sl-btn.sl-w-fill-mobile,
+	.sl-flat.sl-w-fill-mobile,
+	.sl-select.sl-w-fill-mobile,
+	.sl-switch.sl-w-fill-mobile,
+	.sl-lbl.sl-w-fill-mobile {
+		width: auto;
+	}
+
+	/* Make everything appear slightly less fat on larger screens. */
+	.sl-btn, .sl-flat, .sl-select, .sl-switch, .sl-lbl, .sl-input, .sl-range {
+		margin: @sl-widget-margin-v-large 0;
+		padding: @sl-widget-padding-v-large @sl-widget-padding-h-large;
+		height: @sl-widget-height-large;
+	}
+}
+
+/* Buttons get the same font-weight and cursor. a.sl-flat keeps inherited font weight */
+.sl-btn, a.sl-btn, .sl-select, .sl-switch { font-weight: @sl-button-font-weight; }
+.sl-btn, .sl-flat, .sl-select, .sl-switch { cursor: pointer; }
+/* Disabled buttons. */
+.sl-btn:disabled, .sl-flat:disabled, .sl-select:disabled {
+	cursor: default;
+	opacity: @sl-widget-disabled-opacity;
+}
+/* All buttons except flat-buttons enforce the predefined button textcolor. */
+.sl-btn, a.sl-btn, .sl-select, .sl-switch { color: @sl-textcolor-button; }
+/* Flat link buttons should keep their underline. */
+a.sl-flat { text-decoration: underline; }
+
+/** NORMAL BUTTONS **/
+.sl-btn, a.sl-btn, .sl-select, .sl-switch {
+	background-color: @sl-button-background-color;
+	border: @sl-widget-border-width solid @sl-button-border-color;
+	box-shadow: 0 1px fadeout(@sl-widget-shadow-color, @sl-widget-shadow-fadeout-idle);
+}
+.sl-btn:focus, .sl-flat:focus, .sl-select:focus, .sl-switch:focus {
+	border-color: @sl-color-do;
+}
+.sl-btn:hover, .sl-select:hover, .sl-switch:hover {
+	background-color: lighten(@sl-button-background-color, 2);
+	border-color: darken(@sl-button-border-color, 15);
+	box-shadow: 0 1px 3px fadeout(@sl-widget-shadow-color, @sl-widget-shadow-fadeout-hover);
+}
+.sl-btn:active, .sl-select:active, .sl-switch:active {
+	box-shadow: 0 1px 3px fadeout(contrast(@sl-button-background-color), 80) inset;
+}
+
+/** DO BUTTON (does not apply to switches) **/
+.sl-btn.sl-action-do, a.sl-btn.sl-action-do, .sl-select.sl-action-do {
+	background-color: @sl-color-do;
+	border-color: darken(@sl-color-do, 10);
+	color: contrast(@sl-color-do);
+}
+.sl-btn.sl-action-do:focus, .sl-select.sl-action-do:focus {
+	border-color: darken(@sl-color-do, 10); /* same as idle */
+	box-shadow: 0 0 0 1px contrast(@sl-color-do) inset;
+}
+.sl-btn.sl-action-do:hover, .sl-select.sl-action-do:hover {
+	background-color: lighten(@sl-color-do, 5);
+	border-color: darken(@sl-color-do, 25);
+}
+.sl-flat.sl-action-do:hover, a.sl-flat.sl-action-do:hover { color: @sl-color-do; }
+.sl-flat.sl-action-do:focus { border-color: @sl-color-do; }
+
+/* DANGER BUTTON (does not apply to switches) */
+.sl-btn.sl-action-danger, a.sl-btn.sl-action-danger, .sl-select.sl-action-danger {
+	background-color: @sl-color-danger;
+	border-color: darken(@sl-color-danger, 10);
+	color: contrast(@sl-color-danger);
+}
+.sl-btn.sl-action-danger:focus, .sl-select.sl-action-danger:focus {
+	border-color: darken(@sl-color-danger, 10); /* same as idle */
+	box-shadow: 0 0 0 1px contrast(@sl-color-danger) inset;
+}
+.sl-btn.sl-action-danger:hover, .sl-select.sl-action-danger:hover {
+	background-color: lighten(@sl-color-danger, 5);
+	border-color: darken(@sl-color-danger, 25);
+}
+.sl-flat.sl-action-danger:hover, a.sl-flat.sl-action-danger:hover { color: @sl-color-danger; }
+.sl-flat.sl-action-danger:focus { border-color: @sl-color-danger; }

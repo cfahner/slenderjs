@@ -1,0 +1,76 @@
+/* Some inputs consume all width available. */
+.sl-input, .sl-lbl, .sl-range, .sl-select[multiple] { width: 100%; }
+/* Allow override for the 100% width using w-auto */
+.sl-input.sl-w-auto, .sl-lbl.sl-w-auto, .sl-range.sl-w-auto, .sl-select[multiple].sl-w-auto { width: auto; }
+/* labels should not have horizontal whitespace to make them appear more inline */
+.sl-lbl {
+	padding-top: @sl-widget-padding-v;
+	padding-bottom: @sl-widget-padding-v;
+}
+@media (min-width: @sl-breakpoint-large) {
+	.sl-lbl {
+		padding-top: @sl-widget-padding-v-large;
+		padding-bottom: @sl-widget-padding-v-large;
+	}
+}
+/* these elements need a larger min. height to be used properly */
+.sl-select[multiple], textarea.sl-input {
+	min-height: 4.5em;
+	height: auto;
+	overflow: auto;
+	transition: height .1s;
+}
+/* opts-out of the margins/borders */
+.sl-seamless {
+	margin: 0 !important;
+	border: 0 !important;
+	border-radius: 0 !important;
+}
+/* firefox specific inner padding and border removal */
+::-moz-focus-inner { border: 0; padding: 0; }
+/* make color input look more like the other browsers on firefox */
+input[type=color]::-moz-focus-inner { padding: 4px 0; }
+/* consistent styling for placeholder texts cross-browser */
+::-webkit-input-placeholder { color: @sl-textcolor-hint; }
+::-ms-input-placeholder { color: @sl-textcolor-hint; }
+/* firefox requires an opacity rule, the default is not fully opaque */
+::-moz-placeholder { opacity: 1; color: @sl-textcolor-hint; }
+
+/* Theming */
+.sl-input {
+	border: @sl-widget-border-width solid @sl-input-border-color;
+	border-radius: @sl-widget-border-radius;
+	color: @sl-textcolor-primary;
+	transition: border .1s, background .1s;
+	background: transparent;
+}
+.sl-input:hover {
+	border-color: darken(@sl-input-border-color, 20);
+}
+.sl-input:focus {
+	border-color: @sl-color-do;
+	background: #fff;
+	color: #000;
+	box-shadow: 0 2px 2px #ddd inset;
+}
+/* Cursor and opacity fix for disabled elements. */
+.sl-input:disabled, .sl-input[disabled], .sl-range:disabled, .sl-range[disabled] {
+	cursor: default;
+	opacity: @sl-widget-disabled-opacity;
+}
+
+
+
+/* consistent fieldsets */
+.sl-fieldset {
+	border: 1px solid #000;
+	margin: 0 .5em;
+	padding: .35em .625em .75em;
+}
+/* no need for sl-legend class, styling the legend class is assumed if the wrapping
+ * fieldset is enhanced specifically. */
+.sl-fieldset legend {
+	border: 0;
+	padding: 0 1em;
+}
+

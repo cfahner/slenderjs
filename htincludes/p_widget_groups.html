@@ -1,0 +1,107 @@
+<div class="sl-grid sl-mwidth sl-mid">
+
+	<div class=sl-w-50>
+		<div class=sl-block>
+			<h3>Horizontal widget groups</h3>
+			<p>Create horizontally grouped widgets by wrapping a number of
+			widgets with the <code>sl-widgetgroup-h</code> class.</p>
+			<p>Use the <code>sl-w-*</code> classes to specify the width of each
+			widget in the group.</p>
+			<div class=sl-widgetgroup-h>
+				<input class="sl-input sl-w-60" placeholder="Input">
+				<button class="sl-btn sl-w-40">Button</button>
+			</div>
+			<div class=sl-widgetgroup-h>
+				<input class="sl-input sl-w-80" placeholder="Input">
+				<input class="sl-btn sl-w-20" type=color placeholder="#RGB">
+			</div>
+			<div class=sl-widgetgroup-h>
+				<input class="sl-input sl-w-third" placeholder="Input">
+				<input class="sl-input sl-w-third" placeholder="Input">
+				<input class="sl-input sl-w-third" placeholder="Input">
+			</div>
+			<div class=sl-widgetgroup-h>
+				<input class="sl-input sl-w-70" placeholder="Input">
+				<button class="sl-btn sl-w-30 sl-action-do">Save</button>
+			</div>
+			<div class=sl-widgetgroup-h>
+				<input class="sl-input sl-w-40" placeholder="Input">
+				<select class="sl-select sl-w-40">
+					<option>Select</option>
+				</select>
+				<input id=wgroupcheck class="sl-checkbox" type=checkbox>
+				<label for=wgroupcheck class="sl-lbl sl-w-20"></label>
+			</div>
+			<div class=sl-widgetgroup-h>
+				<input class="sl-input sl-w-70" placeholder="Input">
+				<select class="sl-switch sl-w-30">
+					<option value=1></option>
+					<option value=0></option>
+				</select>
+			</div>
+			<p>The <code>sl-w-auto</code> class can also be added to
+			widgetgroups.</p>
+			<div class="sl-widgetgroup-h sl-w-auto">
+				<button class=sl-btn>1</button>
+				<button class=sl-btn>2</button>
+				<button class=sl-btn>3</button>
+			</div>
+			<div class="sl-widgetgroup-h sl-w-auto">
+				<button class=sl-btn>4</button>
+				<button class=sl-btn>5</button>
+				<button class=sl-btn>6</button>
+			</div>
+		</div>
+	</div>
+
+	<div class=sl-w-50>
+		<div class=sl-block>
+			<h3>Vertical widget groups</h3>
+			<p>
+				Create a vertical widgetgroup using the
+				<code>sl-widgetgroup-v</code> class.
+			</p>
+			<div class=sl-widgetgroup-v>
+				<button class="sl-btn sl-w-fill">Button</button>
+				<button class="sl-btn sl-w-fill">Button</button>
+				<button class="sl-btn sl-w-fill">Button</button>
+				<button class="sl-btn sl-w-fill">Button</button>
+				<input class=sl-input placeholder="Input">
+				<input class=sl-checkbox id=wgroupcheck2 type=checkbox>
+				<label class=sl-lbl for=wgroupcheck2>Check</label>
+			</div>
+			<h4>Vertical radio widget group.</h4>
+			<div class=sl-widgetgroup-v>
+				<input class=sl-radio type=radio name=wgroupradio id=wgroupradio1>
+				<label for=wgroupradio1 class=sl-lbl>Radio</label>
+				<input class=sl-radio type=radio name=wgroupradio id=wgroupradio2>
+				<label for=wgroupradio2 class=sl-lbl>Radio</label>
+				<input class=sl-radio type=radio name=wgroupradio id=wgroupradio3>
+				<label for=wgroupradio3 class=sl-lbl>Radio</label>
+				<input class=sl-radio type=radio name=wgroupradio id=wgroupradio4>
+				<label for=wgroupradio4 class=sl-lbl>Radio</label>
+			</div>
+		</div>
+	</div>
+
+	<div class=sl-clear></div>
+
+	<div class=sl-w-50>
+		<div class=sl-block>
+			<h3>Nested widget groups</h3>
+			<p>Nested widget groups are currently not officially supported.
+			Maybe in a future version.</p>
+			<div class=sl-widgetgroup-v>
+				<div class=sl-widgetgroup-h>
+					<button class="sl-btn sl-w-50">Button</button>
+					<button class="sl-btn sl-w-50">Button</button>
+				</div>
+				<div class=sl-widgetgroup-h>
+					<button class="sl-btn sl-w-50">Button</button>
+					<button class="sl-btn sl-w-50">Button</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</div>

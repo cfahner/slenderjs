@@ -1,0 +1,54 @@
+/* Move the entire group one border width to the right (in ltr layouts).
+ * This is done to account for the 1*border-width each widget is moved to the
+ * left to make their borders collapse. */
+.sl-widgetgroup-h {
+	display: inline-block;
+	margin-left: @sl-widget-border-width;
+	width: 100%;
+	.sl-clear();
+}
+.sl-widgetgroup-h.sl-w-auto { width: auto; }
+/* Do the reverse when the layout direction is 'rtl'. */
+[dir=rtl] .sl-widgetgroup-h, [dir=rtl].sl-widgetgroup-h {
+	margin-left: auto;
+	margin-right: @sl-widget-border-width;
+}
+/* All widgets inside a horiz. group are floated to one side (left by default,
+ * assuming a 'ltr' layout). To collapse their borders, every element is moved
+ * 1*border-width to the left.
+ */
+.sl-widgetgroup-h > .sl-btn, .sl-widgetgroup-h > .sl-flat, .sl-widgetgroup-h > .sl-select,
+.sl-widgetgroup-h > .sl-switch, .sl-widgetgroup-h > .sl-input,
+.sl-widgetgroup-h > .sl-range, .sl-widgetgroup-h > .sl-lbl {
+	position: relative;
+	float: left;
+	margin-left: -1 * @sl-widget-border-width;
+}
+/* Reverse the float direction and border collapse in a 'rtl' layout.
+ * The widget classes are not needed here since we do not change "position". */
+[dir=rtl] .sl-widgetgroup-h > *, [dir=rtl].sl-widgetgroup-h > * {
+	float: right;
+	margin-left: auto;
+	margin-right: -1 * @sl-widget-border-width;
+}
+.sl-widgetgroup-v > .sl-btn, .sl-widgetgroup-v > .sl-flat, .sl-widgetgroup-v > .sl-select,
+.sl-widgetgroup-v > .sl-switch, .sl-widgetgroup-v > .sl-input,
+.sl-widgetgroup-v > .sl-range, .sl-widgetgroup-v > .sl-lbl {
+	position: relative;
+	margin-top: 0;
+	margin-bottom: -1 * @sl-widget-border-width;
+}
+/* Set a base z-index. */
+.sl-widgetgroup-h > *, .sl-widgetgroup-v > * { z-index: @sl-z-base; }
+/* Override child element's z-index when focused or hovered so their borders are
+ * always properly visible. */
+.sl-widgetgroup-h > *:hover, .sl-widgetgroup-v > *:hover { z-index: @sl-z-plus; }
+.sl-widgetgroup-h > *:focus, .sl-widgetgroup-v > *:focus { z-index: @sl-z-plusplus; }
+
+/* Generate the default .sl-w classes here to override all widths set from
+ * generic class selectors. */
+.sl-w- { .sl-wgen(); }
+/* Add a basic border around normally unbordered widgets to make them appear more connected */
+.sl-widgetgroup-h > .sl-lbl, .sl-widgetgroup-v > .sl-lbl {
+	border-color: @sl-input-border-color;
+}

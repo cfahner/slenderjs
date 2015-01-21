@@ -1,0 +1,104 @@
+* {
+	box-sizing: border-box;
+}
+html {
+	background: @sl-page-background;
+	font-family: @sl-font-default;
+	color: @sl-textcolor-primary;
+	font-size: 15px;
+	line-height: 1.4286;
+	/* prevent text size adjustments on rotation change */
+	-ms-text-size-adjust: 100%;
+	-webkit-text-size-adjust: 100%;
+}
+html, body {
+	width: 100%;
+	height: 100%;
+	margin: 0;
+}
+
+/* consistent HTML5 element display modes on old browsers */
+article, aside, details, figcaption, figure, footer, header, hgroup, main, nav,
+section, summary { display: block; }
+audio, canvas, progress, video {
+	display: inline-block;
+	vertical-align: baseline;
+}
+
+/* hide hidden and template elements in unsupported browsers */
+[hidden], template { display: none; }
+
+/* link styles */
+a, a:visited, a:active, a:hover {
+	color: @sl-color-links;
+	background: transparent;
+	outline: 0;
+}
+a:focus { outline: 1px solid @sl-color-links; }
+
+/* text normalization */
+abbr[title] { border-bottom: 1px dotted; } /* not styled in IE8+, Chrome */
+b, strong { font-weight: bold; } /* override browsers setting it to "bolder" */
+dfn { font-style: italic; } /* not styled in Safari, Chrome */
+mark {
+	background: #ff0; /* not styled in IE8,9 */
+	color: #000;
+}
+small { font-size: 80%; }
+/* prevent sub/sup affecting line height */
+sub, sup {
+	font-size: 75%;
+	line-height: 0;
+	position: relative;
+	vertical-align: baseline;
+}
+sup { top: -.5em; }
+sub { bottom: -.25em; }
+/* headings and paragraphs */
+h1 { font-size: 39px; }
+h2 { font-size: 24px; }
+h3 { font-size: 19px; }
+h1, h2, h3, h4, h5, h6 { margin: .5em 0; }
+p { margin: 1em 0; }
+
+/* prevent img borders (inside links on IE) */
+img { border: 0; }
+/* overflow should be hidden (not in IE9,10,11) */
+svg:not(:root) { overflow: hidden; }
+
+hr {
+	height: 1px;
+	background: @sl-color-divider;
+	width: 95%;
+	border: 0;
+}
+
+/* Clearfix mixin http://nicolasgallagher.com/micro-clearfix-hack/ */
+.sl-clear() {
+	&:before, &:after {
+		content: " ";
+		display: table;
+	}
+	&:after {
+		clear: both;
+	}
+}
+.sl-clear { .sl-clear(); }
+
+/* DOMNode insert detection method: http://davidwalsh.name/detect-node-insertion */
+@-webkit-keyframes slNodeInserted {
+	from { opacity: .9; }
+	to { opacity: 1; }
+}
+@keyframes slNodeInserted {
+	from { opacity: .9; }
+	to { opacity: 1; }
+}
+
+/* .sl-nojs elements are removed when JS is enabled */
+body .sl-nojs {
+	/* Add the animation used to detect them being added to the DOM */
+	-webkit-animation: slNodeInserted 1ms;
+	animation: slNodeInserted 1ms;
+}
+/* .sl-jsonly ?? */

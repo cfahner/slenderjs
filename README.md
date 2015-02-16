@@ -13,6 +13,7 @@ A lightweight Javascript / CSS framework.
 
 ## Planned
 
+* Media/flag objects (CSS util)
 * Single page app support (history API's for working implementations only)
 
 ## License

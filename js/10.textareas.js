@@ -28,12 +28,13 @@ var textAreaAutoShrink = function ($area) {
 	$area.css({ height: "", "min-height": "", "max-height": "" });
 }
 
-$(document).on("keyup focus", "textarea", function () {
+// Only autogrow textareas that have been specifically enhanced
+$(document).on("keyup focus", "textarea.sl-input", function () {
 	// Unset any previously set shrink timeouts
 	clearTimeout($(this).data("shrinkTimeout"));
 	textAreaAutogrow($(this));
 });
-$(document).on("blur", "textarea", function () {
+$(document).on("blur", "textarea.sl-input", function () {
 	var that = this;
 	// Because of the shrinking of the textarea, some elements may come into
 	// view where the blur event originated (a click), causing an unintended

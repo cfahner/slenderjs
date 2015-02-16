@@ -97,9 +97,17 @@ Slender.restoreViews = function (root) {
 
 Slender.defineView("Slender.TestView", {
 
-	onEnhance: function () { this.element.text("Enhanced"); },
+	onEnhance: function () {
+		this.element.text("Enhanced " + this.viewId);
+		console.log("TestView onEnhance");
+		console.log(this);
+	},
 
-	onRestore: function () { this.element.text("Restored"); }
+	onRestore: function () {
+		this.element.text("Restored " + this.viewId);
+		console.log("TestView onRestore");
+		console.log(this);
+	}
 
 });
 

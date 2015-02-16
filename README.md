@@ -13,7 +13,7 @@ A lightweight Javascript / CSS framework.
 
 ## Planned
 
-* Single page app support (history API's without all the hackery and AJAX)
+* Single page app support (history API's for working implementations only)
 
 ## License
 

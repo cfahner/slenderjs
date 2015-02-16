@@ -27,7 +27,10 @@ var openPopup = function (contentUrl, opts) {
 	// Start an async request for the content of the popup
 	$.ajax(contentUrl, {
 		cache: false,
-		success: function (data) { $popContentInner.html(data); },
+		success: function (data) {
+			$popContentInner.html(data);
+			Slender.enhanceViews($popContentInner);
+		},
 		error: function () { $popContentInner.html($ERROR); }
 	});
 	// Add the new popup elements to the document

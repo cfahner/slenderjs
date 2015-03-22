@@ -91,10 +91,12 @@ $(document).on("click", ".sl-popopen", function (e) {
 	);
 });
 
-$(document).on("click", ".sl-popclose", function (e) {
-	// Prevent following a link (if an anchor element)
-	e.preventDefault();
-	closePopup();
+// prevent following the .sl-popclose links when placed inside a popup
+$(document).on("click", "a.sl-popclose", function (e) {
+	if ($(this).closest(".sl-pop").length > 0) {
+		e.preventDefault();
+		closePopup();
+	}
 });
 
 $(document).keydown(function (e) {

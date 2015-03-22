@@ -2,6 +2,9 @@
 // contains all active subscriptions
 var ACTIVE_SUBS = { };
 
+// TODO: refactor to use $.Callbacks()
+// TODO: deprecate subscriber/origin arguments
+
 /**
  * Subscribes a given object and callback function to a given subscribable
  * event by name.

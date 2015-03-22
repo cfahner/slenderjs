@@ -4,6 +4,14 @@ var $ = window.jQuery;
 var document = window.document;
 
 /* Global SlenderJS namespace. */
-window.Slender = { };
+window.Slender = {
+
+	/**
+	 * Current version of the SlenderJS framework.
+	 * <p>Semantic versioning is used.</p>
+	 * @since 1.0
+	 */
+	version: "0.1.1"
+};
 
 var Slender = window.Slender;

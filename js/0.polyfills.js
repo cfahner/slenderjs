@@ -1,6 +1,7 @@
 /** Copyright (c) 2015, Slender JS (slendium.org) */
 
 // Object.create() polyfill
+// @since 1.0
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/create
 if (typeof Object.create != 'function') {
 	Object.create = (function () {
@@ -23,6 +24,6 @@ if (typeof Object.create != 'function') {
 // No-op fallback when no console object is available
 if (typeof window.console !== "object") {
 	window.console = {
-		log: function (msg) { }
+		log: function (msg) { } // @since 1.0
 	};
 }

@@ -1,6 +1,6 @@
 # SlenderJS
 
-A lightweight Javascript / CSS framework.
+A lightweight Javascript / CSS framework. Requires jQuery.
 
 ## Features
 
@@ -9,12 +9,18 @@ A lightweight Javascript / CSS framework.
 * Easily responsively groupable form elements
 * Window-centered popups that use a mobile fallback page
 * Framework for custom views (for javascript DOM enhancements)
+* NoScript fallbacks
 * And other utilities
+
+### Detailed features
+
+* TODO
 
 ## Planned
 
 * Media/flag objects (CSS util)
 * Single page app support (history API's for working implementations only)
+* Shims for HTML5 sectioning elements
 
 ## License
 

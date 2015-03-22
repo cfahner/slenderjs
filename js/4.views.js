@@ -15,7 +15,7 @@ var VIEWS = { };
  * @since 1.0
  * @author C. Fahner
  */
-Slender.View = function () { }
+Slender.View = function () { };
 
 /**
  * Enhances the DOM element associated with this view.

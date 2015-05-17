@@ -2,23 +2,18 @@
 
 // Object.create() polyfill
 // @since 1.0
-// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/create
+// Based on: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/create
 if (typeof Object.create != 'function') {
 	Object.create = (function () {
-		var Temp = function () { };
+		var f = function () { };
 		return function (prototype) {
-			if (arguments.length > 1) {
-				throw Error('Second argument not supported');
-			}
-			if (typeof prototype != 'object') {
-				throw TypeError('Argument must be an object');
-			}
-			Temp.prototype = prototype;
-			var result = new Temp();
-			Temp.prototype = null;
-			return result;
+			if (typeof prototype != 'object') { throw TypeError('prototype must be an object'); }
+			f.prototype = prototype;
+			var out = new f();
+			f.prototype = null;
+			return out;
 		};
-	})();
+	}());
 }
 
 // No-op fallback when no console object is available
@@ -27,3 +22,9 @@ if (typeof window.console !== "object") {
 		log: function (msg) { } // @since 1.0
 	};
 }
+
+// IE8 support for styling HTML5 sectioning elements
+(function () {
+	var html5 = "article|aside|header|main|footer|section|nav".split("|");
+	for (var i = 0; i < html5.length; i += 1) { document.createElement(html5[i]); }
+}());

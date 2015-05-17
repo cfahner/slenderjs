@@ -7,12 +7,12 @@
  */
 
 // The contents of the popup used while still loading
-var $popLoading = $("<div class=\"sl-tmid sl-block\">").append(
+var $popLoading = $("<div class=\"sl-tmid sl-block-styled\">").append(
 	$("<span class=\"sl-ind sl-ind-load\">")
 );
 
 // The contents of the popup used when an error occurs
-var $popError = $("<div class=\"sl-tmid sl-block\">").append(
+var $popError = $("<div class=\"sl-tmid sl-block-styled\">").append(
 	$("<span class=\"sl-ind sl-ind-error\">")
 );
 
@@ -37,7 +37,7 @@ var openPopup = function (contentUrl, opts) {
 	$.ajax(contentUrl, {
 		cache: false,
 		success: function (data) {
-			$content.html(data);
+			//~ $content.html(data);
 			Slender.enhanceViews($content);
 		},
 		error: function () { $content.html($popError); }
@@ -109,7 +109,7 @@ $(document).on("click", ".sl-popopen", function (e) {
 });
 
 // prevent following the .sl-popclose links when placed inside a popup
-$(document).on("click", "a.sl-popclose", function (e) {
+$(document).on("click", ".sl-popclose", function (e) {
 	if ($(this).closest(".sl-pop").length > 0) {
 		e.preventDefault();
 		closePopup();

@@ -8,12 +8,13 @@ var $activePopup;
 // A reference to the last focused element before a popup opened
 var $lastFocus;
 
+// @todo investigate effectiveness of translateZ(0px) on popups
 var openPopup = function (contentUrl, opts) {
 	if (typeof opts !== "object") { opts = { }; }
 	// Remove any previously active popup
 	closePopup();
-	// Get a reference to the currently focused element (so we can refocus it when the popup closes)
-	$lastFocus = $(window.document.activeElement);
+	// Change the URL hash so the back button can be used to exit popups
+	location.hash = "#sl-pop";
 	// Define popup wrappers and other objects
 	var $popBg = $("<div class=sl-popbg>");
 	var $popWrap = $("<div class=sl-popwrap>");
@@ -41,10 +42,9 @@ var openPopup = function (contentUrl, opts) {
 	$activePopup = $popBg.add($popWrap);
 }
 
-/**
- * Closes any currently active popup.
- */
+/** Closes any currently active popup. */
 var closePopup = function () {
+	if (location.href.endsWith("#sl-pop")) { location.hash = ""; }
 	$("body").find(".sl-popwrap, .sl-popbg").remove();
 	if ($lastFocus) { $lastFocus.focus(); }
 };
@@ -80,6 +80,9 @@ $(document).on("click", ".sl-popopen", function (e) {
 	}
 	// Prevent following the link (if this is an A HREF element)
 	e.preventDefault();
+	// Mark the currently clicked element as the element that should regain
+	// focus when the popup is closed
+	$lastFocus = $(this);
 	// Open a popup (closes any previous popups)
 	openPopup(
 		// The DATA-POPHREF attribute is preferred when opening the popup, this
@@ -101,4 +104,10 @@ $(document).on("click", "a.sl-popclose", function (e) {
 
 $(document).keydown(function (e) {
 	if (e.which === 27) { closePopup(); } // ESC key
+});
+
+$(window).on("hashchange", function (e) {
+	if (e.originalEvent.oldURL.endsWith("#sl-pop")
+		&& !e.originalEvent.newURL.endsWith("#sl-pop")
+	) { closePopup(); }
 });

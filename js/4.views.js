@@ -1,8 +1,8 @@
 /** Key used for storing the ViewId in jQuery data. */
 var DATA_VIEW_ID = "SlenderViewId";
 
-/** Contains all view prototype definitions. */
-var VIEW_PROTOTYPES = { };
+/** Contains all view constructors, associated by view name. */
+var VIEW_CONSTRUCTORS = { };
 
 /** Counter for generating unique ViewIds. */
 var VIEW_ID_COUNTER = 1;
@@ -10,9 +10,18 @@ var VIEW_ID_COUNTER = 1;
 /** Contains all view instances, associated by ViewId. */
 var VIEWS = { };
 
+try {
+	Object.defineProperty(Slender, "viewConstructors", { get: function () { return VIEW_CONSTRUCTORS; } });
+	Object.defineProperty(Slender, "viewInstances", { get: function () { return VIEWS; } });
+} catch (e) { // IE8
+	Slender.viewConstructors = VIEW_CONSTRUCTORS;
+	Slender.viewInstances = VIEWS;
+}
+
 /**
  * Superclass for all custom enhanced views.
  * @since 1.0
+ * @constructor
  * @author C. Fahner
  */
 Slender.View = function () { };
@@ -41,6 +50,20 @@ Slender.View.prototype.restore = function () {
 };
 
 /**
+ * A view implementation for views that are defined as inline objects.
+ * @since 1.0
+ * @constructor
+ * @param {object} blueprint The view's blueprint
+ */
+Slender.InlineView = function (blueprint) {
+	if (typeof blueprint !== "object") { throw TypeError("InlineView requires object blueprint"); }
+	for (var i in blueprint) { this[i] = blueprint[i]; }
+	Slender.View.call(this);
+};
+Slender.InlineView.prototype = Object.create(Slender.View.prototype);
+Slender.InlineView.prototype.constructor = Slender.InlineView;
+
+/**
  * Defines a new custom view that enhances it's assigned DOM element.
  * <p>Custom views are invoked using the "data-view" attribute on a DOM element.
  * When naming custom view, use proper namespacing. For example, instead of
@@ -49,10 +72,19 @@ Slender.View.prototype.restore = function () {
  * method.</p>
  * @since 1.0
  * @param {string} name The namespaced name of the view
- * @param {object} blueprint The blueprint of the custom view
+ * @param {function|object} blueprint Either a constructor function for the
+ *  view or an object that will be converted into a Slender.InlineView
  */
 Slender.defineView = function (name, blueprint) {
-	VIEW_PROTOTYPES[name] = blueprint;
+	if (typeof blueprint == "object") {
+		var inline = function () {
+			Slender.InlineView.call(this, blueprint);
+		};
+		inline.prototype = Object.create(Slender.InlineView.prototype);
+		inline.prototype.constructor = inline;
+		VIEW_CONSTRUCTORS[name] = inline;
+	}
+	else if (typeof blueprint == "function") { VIEW_CONSTRUCTORS[name] = blueprint; }
 };
 
 /**
@@ -66,12 +98,19 @@ Slender.enhanceViews = function (root) {
 	$(root).find("[data-view]").each(function () {
 		if ($(this).data(DATA_VIEW_ID)) { return; } // already enhanced
 		var viewName = $(this).attr("data-view");
-		var blueprint = VIEW_PROTOTYPES[viewName];
-		if (!blueprint) { console.log("undefined view: " + viewName); return; }
+		if (!VIEW_CONSTRUCTORS[viewName]) {
+			console.log("No constructor for view, ", viewName);
+			console.trace && console.trace();
+			return;
+		}
+		var view = new VIEW_CONSTRUCTORS[viewName];
+		if (!(view instanceof Slender.View)) {
+			console.log("Not a view, ", viewName, ", ", view);
+			console.trace && console.trace();
+			return;
+		}
 		var viewId = VIEW_ID_COUNTER;
 		VIEW_ID_COUNTER += 1;
-		var view = Object.create(Slender.View.prototype);
-		for (var i in blueprint) { view[i] = blueprint[i]; }
 		VIEWS[viewId] = view;
 		$(this).data(DATA_VIEW_ID, viewId);
 		view.enhance(viewId, $(this));
@@ -95,20 +134,29 @@ Slender.restoreViews = function (root) {
 	});
 };
 
-Slender.defineView("Slender.TestView", {
+/**
+ * A view used for testing.
+ * @since 1.0
+ * @constructor
+ */
+Slender.TestView = function () { };
+Slender.TestView.prototype = Object.create(Slender.View.prototype);
+Slender.TestView.prototype.constructor = Slender.TestView;
 
-	onEnhance: function () {
-		this.element.text("Enhanced " + this.viewId);
-		console.log("TestView onEnhance");
-		console.log(this);
-	},
+/** @override Slender.View */
+Slender.TestView.prototype.onEnhance = function () {
+	this.element.text("Enhanced " + this.viewId);
+};
 
-	onRestore: function () {
-		this.element.text("Restored " + this.viewId);
-		console.log("TestView onRestore");
-		console.log(this);
-	}
-
+/** @override Slender.View */
+Slender.TestView.prototype.onRestore = function () {
+	this.element.text("Restored " + this.viewId);
+};
+// Define a TestView
+Slender.defineView("Slender.TestView", Slender.TestView);
+Slender.defineView("Slender.TestInlineView", {
+	onEnhance: function () { this.element.text("Enhanced " + this.viewId); },
+	onRestore: function () { this.element.text("Restored " + this.viewId); }
 });
 
 // enhance initial page after document ready

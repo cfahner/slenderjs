@@ -28,3 +28,10 @@ if (typeof window.console !== "object") {
 	var html5 = "article|aside|header|main|footer|section|nav".split("|");
 	for (var i = 0; i < html5.length; i += 1) { document.createElement(html5[i]); }
 }());
+
+// String.endsWidth
+if (typeof String.prototype.endsWith !== 'function') {
+	String.prototype.endsWith = function (suffix) {
+		return this.indexOf(suffix, this.length - suffix.length) !== -1;
+	};
+}

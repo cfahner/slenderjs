@@ -1,51 +1,65 @@
+/* API ideas
+ *  - Separate namespace: Slender.popups
+ *  - Two classes: Popup and Modal
+ *  - The constructor accepts the contents of the popup (HTML elements)
+ *  - When a Modal opens, the URL hash changes to support back buttons
+ *  - Modals are added to a stack of open popups which close one-by-one
+ */
 
-var $LOADING = $("<div class=sl-tmid><div class='sl-ind sl-ind-load'></div></div>");
-var $ERROR = $("<div class=sl-tmid><div class='sl-ind sl-ind-error'></div></div>");
+// The contents of the popup used while still loading
+var $popLoading = $("<div class=\"sl-tmid sl-block\">").append(
+	$("<span class=\"sl-ind sl-ind-load\">")
+);
 
-// A reference to the currently active popup (there can only be one)
-var $activePopup;
+// The contents of the popup used when an error occurs
+var $popError = $("<div class=\"sl-tmid sl-block\">").append(
+	$("<span class=\"sl-ind sl-ind-error\">")
+);
 
 // A reference to the last focused element before a popup opened
 var $lastFocus;
 
-// @todo investigate effectiveness of translateZ(0px) on popups
+/**
+ * Opens a central overlay popup.
+ * @todo Investigate effectiveness of translateZ(0) on popups
+ * @param {string|object} [contentUrl] The URL to load inside the popup
+ */
 var openPopup = function (contentUrl, opts) {
 	if (typeof opts !== "object") { opts = { }; }
 	// Remove any previously active popup
 	closePopup();
 	// Change the URL hash so the back button can be used to exit popups
-	location.hash = "#sl-pop";
-	// Define popup wrappers and other objects
-	var $popBg = $("<div class=sl-popbg>");
-	var $popWrap = $("<div class=sl-popwrap>");
-	var $popContain = $("<div class=sl-popcontain>")
-		.click(function (e) { if (e.target === this) { closePopup(); } });
-	var $popContent = $("<div class=sl-pop tabindex=0>");
-	var $popContentInner = $("<div>").html($LOADING);
+	if (!location.href.endsWith("#sl-pop")) { location.hash = "#sl-pop"; }
 	// If popup is in need of styling, add the '.sl-popstyled' class as a default styleable popup class
-	if (opts.styled) { $popContent.addClass("sl-popstyled"); }
-	$popContent.append($popContentInner);
+	var $content = $("<div>").append($popLoading);
+	if (opts.styled) { $content.addClass("sl-popstyled"); } // deprecated 0.2
 	// Start an async request for the content of the popup
 	$.ajax(contentUrl, {
 		cache: false,
 		success: function (data) {
-			$popContentInner.html(data);
-			Slender.enhanceViews($popContentInner);
+			$content.html(data);
+			Slender.enhanceViews($content);
 		},
-		error: function () { $popContentInner.html($ERROR); }
+		error: function () { $content.html($popError); }
 	});
 	// Add the new popup elements to the document
-	$("body").append($popBg);
-	$("body").append($popWrap.html($popContain.html($popContent)));
-	setTimeout(function () { $popContent.focus(); }, 0);
-	// Replace the "active-popup" set with the current popup elements
-	$activePopup = $popBg.add($popWrap);
+	$("body").append(
+		$("<div class=sl-popbg>"), // the popup backdrop
+		$("<div class=sl-popwrap>").append( // screen overlay container
+			$("<div class=sl-popcontain>").append( // clickable screen overlay
+				$("<div class=sl-pop tabindex=0>").html($content) // actual popup box
+			).click(function (e) { if (e.target === this) { closePopup(); } })
+		)
+	);
+	setTimeout(function () { $content.parent().focus(); }, 0);
 }
 
 /** Closes any currently active popup. */
 var closePopup = function () {
 	if (location.href.endsWith("#sl-pop")) { location.hash = ""; }
-	$("body").find(".sl-popwrap, .sl-popbg").remove();
+	var $oldPopup = $("body").find(".sl-popwrap, .sl-popbg");
+	Slender.restoreViews($oldPopup);
+	$oldPopup.remove();
 	if ($lastFocus) { $lastFocus.focus(); }
 };
 

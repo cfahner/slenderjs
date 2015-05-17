@@ -29,7 +29,7 @@ if (typeof window.console !== "object") {
 	for (var i = 0; i < html5.length; i += 1) { document.createElement(html5[i]); }
 }());
 
-// String.endsWidth
+// String.endsWith
 if (typeof String.prototype.endsWith !== 'function') {
 	String.prototype.endsWith = function (suffix) {
 		return this.indexOf(suffix, this.length - suffix.length) !== -1;

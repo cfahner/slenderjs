@@ -3,10 +3,10 @@ var EVENTS_ANIMATION_START = "animationstart MSAnimationStart webkitAnimationSta
 
 $(function () {
 	/* Initial remove of all .sl-nojs elements. */
-	$(".sl-nojs").remove();
+	$(".sl-nojs").hide();
 	/* Removes all .sl-nojs elements from the page when DOM insert was detected. */
 	$(document).on(EVENTS_ANIMATION_START, ".sl-nojs", function (e) {
-		if (e.originalEvent.animationName === "slNodeInserted") { $(this).remove(); }
+		if (e.originalEvent.animationName === "slNodeInserted") { $(this).hide(); }
 	});
 });
 

@@ -10,6 +10,7 @@ A lightweight Javascript / CSS framework. Requires jQuery.
 * Window-centered popups that use a mobile fallback page
 * Framework for custom views (for javascript DOM enhancements)
 * NoScript fallbacks
+* Support for styling HTML5 sectioning elements (IE8)
 * And other utilities
 
 ### Detailed features
@@ -18,9 +19,8 @@ A lightweight Javascript / CSS framework. Requires jQuery.
 
 ## Planned
 
-* Media/flag objects (CSS util)
+* Media/flag objects (CSS utils)
 * Single page app support (history API's for working implementations only)
-* Shims for HTML5 sectioning elements
 
 ## License
 

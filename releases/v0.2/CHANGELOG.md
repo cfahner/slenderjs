@@ -6,10 +6,12 @@ Popups have been given some extra attention.
 
 * Forms can now submit to a popup.
 * A scroll event that automatically defers the real scroll event so it is not spammed
+* A css class and javascript property that contains this scroll state
 * Added `.sl-smooth-anchor` which scrolls smoothly to the link target
 * Fixed textareas only allowing a single line of text in firefox
 * Added `.sl-zoomable`, which causes the given element to receive `slzoom`
   events (which are triggered by mousewheel or touch pinching)
+* Fixed `.sl-switch` triggering a form submit onchange (?)
 
 ## Added
 

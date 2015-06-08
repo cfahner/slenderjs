@@ -32,6 +32,9 @@
 }
 /* Flat buttons should have transparent background by default */
 .sl-flat, a.sl-flat { background: transparent; }
+/** This fixes textareas not allowing newlines on some browsers. */
+textarea.sl-input { white-space: pre-wrap; }
+
 
 @media (min-width: @sl-breakpoint-large) {
 	.sl-btn.sl-w-fill-mobile,

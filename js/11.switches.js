@@ -5,7 +5,7 @@
 /**
  * Template object for all flipswitches.
  */
-var $switchTemplate = $("<button class='sl-flat sl-switch-enh'>").append(
+var $switchTemplate = $("<span class='sl-flat sl-switch-enh'>").append(
 	$("<span class=sl-switch-flip>"), $("<span class=sl-switch-space>"),
 	$("<span class=sl-switch-text>")
 );

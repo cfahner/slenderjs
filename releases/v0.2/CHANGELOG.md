@@ -1,4 +1,4 @@
-# CHANGELOG 0.2; YYYY-MM-DD; POPUPDATE
+# CHANGELOG 0.2; YYYY-MM-DD;
 
 ## Unreleased
 
@@ -22,6 +22,8 @@
   button can be used to close the popup.
 * Added `.sl-border-color-*`, `.sl-background-color-*` and `.sl-text-color-*`
   that match action colors ( `@sl-color-`: `divider`, `do`, `danger`, `links` )
+* Added `.sl-grid-medium` which (when added to a `.sl-grid`) does not stack
+  child elements on medium sized screens
 
 ## Deprecated
 

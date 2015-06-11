@@ -1,0 +1,29 @@
+<div class="sl-mwidth sl-mid">
+	<div class=sl-block>
+		<h2>Zoomables</h2>
+		The <code>.sl-zoomable</code> class can be added to elements in order
+		to receive <code>slzoom</code> events. This event combines scrollwheel
+		mouse events with pinch to zoom touch events.
+		<div data-view="Slender.Tests.Zoomable" class=sl-zoomable style="height:300px;overflow:hidden;">
+			<div class=sl-zoom-inner style="width:100px;height:100px;background:red;margin:0 auto;">
+				zoom me
+			</div>
+		</div>
+	</div>
+</div>
+<script>
+Slender.defineView("Slender.Tests.Zoomable", {
+
+	onEnhance: function () {
+		this.element.on("slzoom", function (e) {
+			var $scale = $(this).find(".sl-zoom-inner");
+			$scale.css({
+				width: $scale.width() * e.zoomFactor,
+				height: $scale.height() * e.zoomFactor,
+				transform: "translateZ(0px)"
+			}).text(e.zoomOriginX + ", " + e.zoomOriginY);
+		});
+	}
+
+});
+</script>

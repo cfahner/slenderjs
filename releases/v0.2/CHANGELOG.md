@@ -3,8 +3,6 @@
 ## Unreleased
 
 * Forms can now submit to a popup.
-* A scroll event that automatically defers the real scroll event so it is not spammed
-* A css class and javascript property that contains this scroll state
 * Added `.sl-smooth-anchor` which scrolls smoothly to the link target
 
 ## Added
@@ -24,10 +22,13 @@
   child elements on medium sized screens
 * Added `.sl-zoomable`, which causes the given element to receive `slzoom`
   events (which are triggered by mousewheel or touch events)
+* Added the hash `#sl-scroll-` which scrolls the page (when the document is
+  ready) to the suffixed numeric Y position
 
 ## Deprecated
 
-* Deprecated the `data-styled` attribute on elements that open a popup
+* Deprecated the `data-styled` attribute on elements that open a popup, use
+  `data-popstyled` instead
 
 ## Fixed
 

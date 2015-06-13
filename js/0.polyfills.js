@@ -35,3 +35,11 @@ if (typeof String.prototype.endsWith !== 'function') {
 		return this.indexOf(suffix, this.length - suffix.length) !== -1;
 	};
 }
+
+// String.startsWith
+if (!String.prototype.startsWith) {
+	String.prototype.startsWith = function(searchString, position) {
+		position = position || 0;
+		return this.indexOf(searchString, position) === position;
+	};
+}

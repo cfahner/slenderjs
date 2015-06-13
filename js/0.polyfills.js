@@ -43,3 +43,18 @@ if (!String.prototype.startsWith) {
 		return this.indexOf(searchString, position) === position;
 	};
 }
+
+(function() {
+	var previous = 0;
+	if (!window.requestAnimationFrame) {
+		window.requestAnimationFrame = function(callback, element) {
+			var now = new Date().getTime();
+			var timeUntilNext = Math.max(0, 16 - (now - previous));
+			previous = now + timeUntilNext;
+			return window.setTimeout(function() {
+				callback(now + timeUntilNext);
+			}, timeUntilNext);
+		};
+	}
+	if (!window.cancelAnimationFrame) { window.cancelAnimationFrame = clearTimeout; }
+}());

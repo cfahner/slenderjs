@@ -46,4 +46,19 @@
 			Always opens popup
 		</a><br>
 	</div>
+	<div class=sl-block>
+		<h3>Submitting forms to popups</h3>
+		<p>
+			Add the class <code>sl-popopen</code> to a form to automatically submit
+			that form to a new popup (the default submit action is ignored). The
+			popups API will automatically use the <code>action</code> and
+			<code>method</code> attributes of the form to determine the request type
+			and URL.
+		</p>
+		<p>The <code>enctype</code> attribute is not supported.</p>
+		<form method=post action=popup.html class=sl-popopen>
+			<input class="sl-input sl-w-auto" placeholder="Input">
+			<button type=submit class=sl-btn>Submit</button>
+		</form>
+	</div>
 </div>

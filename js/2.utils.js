@@ -8,6 +8,13 @@ $(function () {
 	$(document).on(EVENTS_ANIMATION_START, ".sl-nojs", function (e) {
 		if (e.originalEvent.animationName === "slNodeInserted") { $(this).hide(); }
 	});
+	
+	// Detect if the hash starts with 'sl-scroll-'
+	if (window.location.hash.startsWith("#sl-scroll-")) {
+		var scrollToY = window.location.hash.substr("#sl-scroll-".length);
+		var currentX = window.pageXOffset || window.document.documentElement.scrollLeft;
+		if ($.isNumeric(scrollToY)) { window.scrollTo(currentX, scrollToY); }
+	}
 });
 
 /* See also: css/1.consts.less */

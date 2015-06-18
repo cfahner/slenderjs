@@ -1,4 +1,4 @@
-# CHANGELOG 0.2; 2015-06-DD;
+# CHANGELOG 0.2; 2015-06-18;
 
 ## Added
 

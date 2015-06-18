@@ -1,16 +1,37 @@
 <div class="sl-mwidth sl-mid">
 	<div class=sl-grid>
-		<div class=sl-w-50><div class=sl-block>
-			<h1>Slender.JS</h1>
-			<ul>
-				<li>Minimal CSS and Javascript</li>
-				<li>Works without Javascript enabled</li>
-				<li>Javascript only used to enhance</li>
-				<li>Modern browsers only</li>
-				<li>Mobile first</li>
-			</ul>
-			<script>document.write("Version " + Slender.version);</script>
-		</div></div>
+		<div class=sl-w-50>
+			<div class=sl-block>
+				<h1>Slender.JS</h1>
+				<ul>
+					<li>Minimal CSS and Javascript</li>
+					<li>Works without Javascript enabled</li>
+					<li>Javascript only used to enhance</li>
+					<li>Modern browsers only</li>
+					<li>Mobile first</li>
+				</ul>
+				<script>document.write("Version " + Slender.version);</script>
+			</div>
+			<div class=sl-block>
+				<h2>Details/summary polyfill</h2>
+				<p>
+					<code>DETAILS</code> and <code>SUMMARY</code> elements are
+					polyfilled on page load when not supported natively.
+				</p>
+				<details>
+					<summary>Details element</summary>
+					<p>The details</p> and some other flow content (text node).
+				</details>
+				<details open>
+					<summary>Details[open] element</summary>
+					<p>These contents should be visible</p>
+				</details>
+				<p>
+					The event <code>slinitdetailssummary</code> can be triggered
+					to force the polyfill on new elements (popups do this).
+				</p>
+			</div>
+		</div>
 		<div class=sl-w-50><div class=sl-block>
 			<h2>A second column.</h2>
 			<p>

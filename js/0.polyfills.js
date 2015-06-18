@@ -23,9 +23,9 @@ if (typeof window.console !== "object") {
 	};
 }
 
-// IE8 support for styling HTML5 sectioning elements
+// IE8 support for styling HTML5 elements
 (function () {
-	var html5 = "article|aside|header|main|footer|section|nav".split("|");
+	var html5 = "article|aside|header|main|footer|section|nav|details|summary".split("|");
 	for (var i = 0; i < html5.length; i += 1) { document.createElement(html5[i]); }
 }());
 
@@ -44,6 +44,7 @@ if (!String.prototype.startsWith) {
 	};
 }
 
+// requestAnimationFrame
 (function() {
 	var previous = 0;
 	if (!window.requestAnimationFrame) {
@@ -58,3 +59,60 @@ if (!String.prototype.startsWith) {
 	}
 	if (!window.cancelAnimationFrame) { window.cancelAnimationFrame = clearTimeout; }
 }());
+
+// DETAILS,SUMMARY
+// based on information provided here: https://mathiasbynens.be/notes/html5-details-jquery
+(function (w) {
+
+var supportDetails = !!("open" in window.document.createElement("details"));
+
+var isOpera = Object.prototype.toString.call(window.opera) == '[object Opera]';
+
+var initSummary = function ($summary) {
+	// do not reinitialize if this data has been set
+	if ($summary.data("sl-summaryinit")) { return; }
+	
+	var $details = $summary.closest("details");
+	// Only keep the node in the collection if it’s a text node containing more than only whitespace
+	// http://www.whatwg.org/specs/web-apps/current-work/multipage/common-microsyntaxes.html#space-character
+	var $contents = $details.contents().filter(function () {
+		return this.nodeType == 3 && /[^ \t\n\f\r]/.test(this.data);
+	}).wrap("<span>"); // and wrap in SPAN
+	// Now all child nodes of the DETAILS element can be selected (except SUMMARY)
+	var $togglable = $details.children(":not(summary)");
+	// Set the initial state of the 'open' property
+	$details.prop("open", typeof $details.attr("open") === "string");
+	if ($details.prop("open")) { $togglable.show(); }
+	else { $togglable.hide(); }
+	// Improve accessibility using tabindex and button role
+	$summary.attr("role", "button").prop("tabIndex", 0).click(function () {
+		if ($details.prop("open")) {
+			$details.prop("open", false).removeAttr("open");
+			$togglable.hide();
+		} else {
+			$details.prop("open", true).attr("open", "");
+			$togglable.show();
+		}
+	}).keyup(function (e) {
+		if (e.keyCode == 32 || (e.keyCode == 13 && !isOpera)) {
+			e.preventDefault();
+			$summary.click();
+		}
+	});
+	
+	// prevent re-initialization
+	$summary.data("sl-summaryinit", true);
+};
+
+$("html").addClass(supportDetails ? "sl-support-details" : "sl-support-nodetails");
+if (!supportDetails) {
+	$(document).on("slinitdetailssummary", "details summary", function () {
+		if (!$(this).data("sl-summaryinit")) { initSummary($(this)); }
+	});
+	// force an initial details/summary initialization
+	$(function () {
+		$("details summary").trigger("slinitdetailssummary");
+	});
+}
+
+}(window));

@@ -40,6 +40,7 @@ var openPopup = function (opts) {
 		cache: !!opts.cache,
 		success: function (data) {
 			$content.html(data);
+			$content.find("details summary").trigger("slinitdetailssummary");
 			Slender.enhanceViews($content);
 		},
 		error: function () { $content.html($popError); }

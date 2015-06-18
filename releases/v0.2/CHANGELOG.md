@@ -1,14 +1,10 @@
-# CHANGELOG 0.2; YYYY-MM-DD;
-
-## Unreleased
-
-* Forms can now submit to a popup.
-* Added `.sl-smooth-anchor` which scrolls smoothly to the link target
+# CHANGELOG 0.2; 2015-06-DD;
 
 ## Added
 
 * Added "support" for the following HTML5 elements: `article`, `aside`,
   `header`, `main`, `footer`, `section` and `nav`
+* Added "support" for `details` and `summary`
 * `Slender.defineView()` now also allows constructor functions instead of
   inlined view objects (these constructors must create `Slender.View`s)
 * The `Slender.viewConstructors` property that contains a map of all defined
@@ -24,6 +20,7 @@
   events (which are triggered by mousewheel or touch events)
 * Added the hash `#sl-scroll-` which scrolls the page (when the document is
   ready) to the suffixed numeric Y position
+* Added support for submitting forms to popups (add `.sl-popopen` to a form)
 
 ## Deprecated
 

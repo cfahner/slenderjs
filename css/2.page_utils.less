@@ -25,6 +25,26 @@ audio, canvas, progress, video {
 	vertical-align: baseline;
 }
 
+/* The following details/summary styles are only applied when javascript is
+ * enabled (otherwise the .sl-support classes are not set).
+ */
+/* Make elements appear focusable */
+.sl-support-details summary:focus, .sl-support-nodetails summary:focus {
+	outline: 1px solid @sl-color-do;
+}
+/* Make the details contents are hidden by default */
+.sl-support-nodetails details > * { display: none; }
+/* Except for the summary element (always visible) */
+.sl-support-nodetails details summary { display: block; }
+/* Indicate clickability */
+summary { cursor: pointer; }
+/* Open/close "icon" compatibility */
+.sl-support-nodetails details summary:before {
+	font-family: monospace;
+	content: "▶ ";
+}
+.sl-support-nodetails details[open] summary:before { content: "▼ "; }
+
 /* hide hidden and template elements in unsupported browsers */
 [hidden], template { display: none; }
 

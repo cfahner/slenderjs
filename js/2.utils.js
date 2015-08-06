@@ -12,8 +12,7 @@ $(function () {
 	// Detect if the hash starts with 'sl-scroll-'
 	if (window.location.hash.startsWith("#sl-scroll-")) {
 		var scrollToY = window.location.hash.substr("#sl-scroll-".length);
-		var currentX = window.pageXOffset || window.document.documentElement.scrollLeft;
-		if ($.isNumeric(scrollToY)) { window.scrollTo(currentX, scrollToY); }
+		if ($.isNumeric(scrollToY)) { $(window).scrollTop(scrollToY); }
 	}
 });
 

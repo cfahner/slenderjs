@@ -35,7 +35,7 @@ Slender.View = function () { };
 Slender.View.prototype.enhance = function (id, element) {
 	this.viewId = id;
 	this.element = element;
-	this.onEnhance();
+	this.onEnhance && this.onEnhance();
 };
 
 /**
@@ -44,7 +44,7 @@ Slender.View.prototype.enhance = function (id, element) {
  * @since 1.0
  */
 Slender.View.prototype.restore = function () {
-	this.onRestore();
+	this.onRestore && this.onRestore();
 	delete this.viewId;
 	delete this.element;
 };

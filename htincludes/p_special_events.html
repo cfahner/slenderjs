@@ -27,3 +27,26 @@ Slender.defineView("Slender.Tests.Zoomable", {
 
 });
 </script>
+<div class="sl-mwidth sl-mid">
+	<div class="sl-block">
+		<h2>Auto-scrolling</h2>
+		<p>
+			Content can be auto-scrolled to using the <code>#sl-scroll-</code>
+			fragment identifier.
+		</p>
+		<p style="min-height:2000px;">Here is some filler content</p>
+		<input id=slscrollinput value="1000">
+		<button id=slscrollinputsubmit>Scroll</button>
+		<p>
+			Clicking the button sets the hash and then
+			<code>location.reload(true)</code>s the page.
+		</p>
+	</div>
+</div>
+<script>
+	$("#slscrollinput").val(Math.floor(Math.random() * 1000) + 500);
+	$("#slscrollinputsubmit").click(function () {
+		window.location.hash = "#sl-scroll-" + $("#slscrollinput").val();
+		window.location.reload(true);
+	});
+</script>

@@ -1,5 +1,8 @@
 # Feature requests
 
+> Try to remove `html { height: 100%; }` rule (Android 2.x browser cannot scroll)
+> `esc` key always returns focus even if no popup was open
+
 Using the `.sl-popopen` class on forms should submit the form and open the
 results in a new popup. An optional attribute `data-popaction` can be used to
 use a different form action when submitting to a popup.
@@ -7,6 +10,8 @@ use a different form action when submitting to a popup.
 Elements using `.sl-popclose` should be able to specify a `data-popreturn`
 attribute. The value of this attribute is posted to the element that opened the
 popup once the popup is closed.
+
+Float classes: `.sl-floatr` and `.sl-floatl`
 
 A popup stack that enables support for multiple popups on top of each other.
 

@@ -59,7 +59,7 @@ var openPopup = function (opts) {
 
 /** Closes any currently active popup. */
 var closePopup = function () {
-	if (location.href.endsWith("#sl-pop")) { location.hash = ""; }
+	if (location.href.endsWith("#sl-pop")) { location.hash = "_"; }
 	var $oldPopup = $("body").find(".sl-popwrap, .sl-popbg");
 	Slender.restoreViews($oldPopup);
 	$oldPopup.remove();

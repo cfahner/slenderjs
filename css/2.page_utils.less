@@ -1,6 +1,4 @@
-* {
-	box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 html {
 	background: @sl-page-background;
 	font-family: @sl-font-default;
@@ -16,6 +14,10 @@ html, body {
 	height: 100%;
 	margin: 0;
 }
+
+@media (min-width: 1500px) { body { font-size: 125%; } }
+@media (min-width: 2000px) { body { font-size: 150%; } }
+@media (min-width: 2500px) { body { font-size: 175%; } }
 
 /* consistent HTML5 element display modes on old browsers */
 article, aside, details, figcaption, figure, footer, header, hgroup, main, nav,

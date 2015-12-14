@@ -11,7 +11,7 @@ window.Slender = {
 	 * <p>Semantic versioning is used.</p>
 	 * @since 1.0
 	 */
-	version: "0.2.1"
+	version: "0.3"
 };
 
 var Slender = window.Slender;

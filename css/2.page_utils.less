@@ -5,7 +5,7 @@ html {
 	background: @sl-page-background;
 	font-family: @sl-font-default;
 	color: @sl-textcolor-primary;
-	font-size: 15px;
+	font-size: 16px;
 	line-height: 1.4286;
 	/* prevent text size adjustments on rotation change */
 	-ms-text-size-adjust: 100%;
@@ -41,9 +41,9 @@ summary { cursor: pointer; }
 /* Open/close "icon" compatibility */
 .sl-support-nodetails details summary:before {
 	font-family: monospace;
-	content: "▶ ";
+	content: "\25B6 ";
 }
-.sl-support-nodetails details[open] summary:before { content: "▼ "; }
+.sl-support-nodetails details[open] summary:before { content: "\25BC "; }
 
 /* hide hidden and template elements in unsupported browsers */
 [hidden], template { display: none; }
@@ -55,6 +55,7 @@ a, a:visited, a:active, a:hover {
 	outline: 0;
 }
 a:focus { outline: 1px solid @sl-color-links; }
+a.sl-flat:focus, a.sl-btn:focus { outline: 0; }
 
 /* text normalization */
 abbr[title] { border-bottom: 1px dotted; } /* not styled in IE8+, Chrome */
@@ -75,10 +76,10 @@ sub, sup {
 sup { top: -.5em; }
 sub { bottom: -.25em; }
 /* headings and paragraphs */
-h1 { font-size: 39px; }
-h2 { font-size: 24px; }
-h3 { font-size: 19px; }
-h1, h2, h3, h4, h5, h6 { margin: .5em 0; }
+h1 { font-size: 250%; }
+h2 { font-size: 175%; }
+h3 { font-size: 125%; }
+h1, h2, h3, h4, h5, h6 { margin: .4em 0; }
 p { margin: 1em 0; }
 
 /* prevent img borders (inside links on IE) */
@@ -125,3 +126,6 @@ body .sl-nojs {
 	animation: slNodeInserted 1ms;
 }
 /* .sl-jsonly ?? */
+
+.sl-floatr { float: right; }
+.sl-floatl { float: left; }

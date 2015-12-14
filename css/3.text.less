@@ -13,6 +13,23 @@ pre { margin: .5em 1em; }
 .sl-tsmaller { font-size: smaller; }
 .sl-tlarger { font-size: larger; }
 
+/* forces some text colors */
+.sl-tprimary { color: @sl-textcolor-primary; }
+.sl-tsecondary { color: @sl-textcolor-secondary; }
+
+/* forces some text effects */
+.sl-tfat { font-weight: bold; }
+.sl-tskew { font-style: italic; }
+
+/* force some text decorations (and combinations of..) */
+.sl-tline { text-decoration: line-through; }
+.sl-tuline { text-decoration: underline; }
+.sl-toline { text-decoration: overline; }
+.sl-tline.sl-tuline { text-decoration: line-through underline; }
+.sl-tline.sl-toline { text-decoration: line-through overline; }
+.sl-tuline.sl-toline { text-decoration: underline overline; }
+.sl-tline.sl-toline.sl-tuline { text-decoration: line-through underline overline; }
+
 /* first define start/end literally */
 .sl-tstart { text-align: start; }
 .sl-tend { text-align: end; }

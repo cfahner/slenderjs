@@ -14,8 +14,8 @@ $(function () {
 		clearTimeout(scrollDelay);
 		scrollDelay = setTimeout(function () {
 			scrolling = false;
-			$(".sl-onscroll").trigger("slscroll");
-		}, 250);
+			$(".sl-onscroll").trigger({ type: "slscroll" });
+		}, 350);
 	});
 
 });

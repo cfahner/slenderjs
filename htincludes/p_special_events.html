@@ -1,4 +1,4 @@
-<div class="sl-mwidth sl-mid">
+<div class=sl-mid>
 	<div class=sl-block>
 		<h2>Zoomables</h2>
 		The <code>.sl-zoomable</code> class can be added to elements in order
@@ -27,8 +27,72 @@ Slender.defineView("Slender.Tests.Zoomable", {
 
 });
 </script>
-<div class="sl-mwidth sl-mid">
-	<div class="sl-block">
+
+
+<div class=sl-mid>
+	<div class=sl-block>
+		<h2>Movables</h2>
+		The <code>.sl-movable</code> class can be added to elements in order to
+		receive <code>slmove</code> events. This event combines mouse dragging
+		events with touch dragging events (one touch point).
+		<div data-view="Slender.Tests.Movable" class=sl-movable style="height:300px;overflow:hidden;">
+			<div class=sl-move-inner style="width:100px;height:100px;background:red;margin:0 auto;">
+				move me
+			</div>
+		</div>
+	</div>
+</div>
+<script>
+Slender.defineView("Slender.Tests.Movable", {
+
+	onEnhance: function () {
+		this.element.on("slmove", function (e) {
+			var $move = $(this).find(".sl-move-inner");
+			$move.css({
+				transform: "translateX(" + e.moveDiffX + "px)"
+					+ " translateY(" + e.moveDiffY + "px)"
+					+ " translateZ(0px)"
+			}).text(e.moveDiffX + ", " + e.moveDiffY);
+		});
+	}
+
+});
+</script>
+
+
+<div class=sl-mid>
+	<div class="sl-block sl-onscroll" data-view="Slender.Tests.Scroll">
+		<h2>Scroll delay</h2>
+		<p>The <code>.sl-onscroll</code> class can be added to elements in order
+		to receive <code>slscroll</code> events. This event combines multiple
+		scroll events into a single scroll event which fires after a delay to
+		ensure the user is done scrolling. This allows heavy tasks to be delayed
+		until scrolling is done (which itself is a heavy task).</p>
+		<p>The current scroll state can be obtained from script using the
+		<code>Slender.scrolling</code> property.</p>
+		<div class=slscrollexample style="color:#fff;">Scroll</div>
+	</div>
+</div>
+<script>
+Slender.defineView("Slender.Tests.Scroll", {
+
+	onEnhance: function () {
+		$(this.element).on("slscroll", function () {
+			$(".slscrollexample").css({ background: "red" });
+			clearTimeout($(this).data("scrollexampleto"));
+			var to = setTimeout(function () {
+				$(".slscrollexample").css({ background: "" });
+			}, 200);
+			$(this).data("scrollexampleto", to);
+		});
+	}
+
+});
+</script>
+
+
+<div class=sl-mid>
+	<div class=sl-block>
 		<h2>Auto-scrolling</h2>
 		<p>
 			Content can be auto-scrolled to using the <code>#sl-scroll-</code>

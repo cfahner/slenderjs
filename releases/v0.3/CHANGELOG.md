@@ -1,16 +1,4 @@
-# CHANGELOG 0.3; 2015-12-DD;
-
-Section for the most notable changes.
-
-## Unreleased
-
-* Added support for a generic list of actions (custom action colors)
-* Added `.sl-tcolor.sl-action-*`, `.sl-tcolor-contrast.sl-action-*`,
-  `.sl-bgcolor.sl-action-*`, `.sl-bordercolor.sl-action-*` and
-  `.sl-bgcolor-contrast.sl-action-*` (which apply the given action color or a
-  contrasted version of the action color to either text, background or borders).
-* Added auto enhanced `title` attributes
-* Flipswitch has no tabindex + does not inherit classes from origin SELECT
+# CHANGELOG 0.3; 2015-12-16;
 
 ## Added
 
@@ -40,3 +28,4 @@ Section for the most notable changes.
 * Updated to latest LessCSS
 * Increased default font size to `16px` (from `15px`)
 * Increased minimum popup width to `40%` (from `30%`)
+* Fixed `.sl-switch` not being accessible by keyboard

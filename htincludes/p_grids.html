@@ -1,138 +1,130 @@
-<div class="sl-mwidth sl-mid">
-	<div class=sl-grid>
-		<div class=sl-w-50>
-			<div class=sl-block>
-				<h3 class=sl-tmono>.sl-mwidth</h3>
-				<p>
-					The class <code>sl-mwidth</code> applies a default site-wide
-					maximum content width to a block element. This prevents content
-					being stretched to 100% width on large screens.
-				</p>
-				<h3 class=sl-tmono>.sl-mid</h3>
-				<p>
-					The class <code>sl-mid</code> adds <code>margin:0 auto;</code>
-					to an element and therefore centers block elements.
-				</p>
-				<h3 class=sl-tmono>.sl-grid</h3>
-				<p>
-					Grids display a number of elements side by side. Add the class
-					<code>sl-grid</code> to an element to create a grid. By default
-					the columns of a grid take up the full width of the grid. To
-					get custom column widths, add one of the <code>sl-w-*</code>
-					classes to the column.
-				</p>
-				<p>
-					Columns cannot be styled directly. Add an inner container
-					element and style that instead (padding, margins, borders).
-				</p>
-				<p>All grids stack when on small screens.</p>
+<div class=sl-grid>
+	<div class=sl-w-50>
+		<div class=sl-block>
+			<h3 class=sl-tmono>.sl-mid</h3>
+			<p>
+				The class <code>sl-mid</code> adds <code>margin:0 auto;</code>
+				to an element and therefore centers block elements.
+			</p>
+			<h3 class=sl-tmono>.sl-grid</h3>
+			<p>
+				Grids display a number of elements side by side. Add the class
+				<code>sl-grid</code> to an element to create a grid. By default
+				the columns of a grid take up the full width of the grid. To
+				get custom column widths, add one of the <code>sl-w-*</code>
+				classes to the column.
+			</p>
+			<p>
+				Columns cannot be styled directly. Add an inner container
+				element and style that instead (padding, margins, borders).
+			</p>
+			<p>All grids stack when on small screens.</p>
+		</div>
+	</div>
+	<div class=sl-w-50>
+		<div class=sl-block>
+			<h3>Six columns</h3>
+			<p>Display six columns per row.</p>
+			<div class=sl-grid>
+				<div class="sl-w-sixth sl-tmono">.sl-w-sixth</div>
+				<div class="sl-w-sixth sl-tmono">.sl-w-sixth</div>
+				<div class="sl-w-sixth sl-tmono">.sl-w-sixth</div>
+				<div class="sl-w-sixth sl-tmono">.sl-w-sixth</div>
+				<div class="sl-w-sixth sl-tmono">.sl-w-sixth</div>
+				<div class="sl-w-sixth sl-tmono">.sl-w-sixth</div>
+			</div>
+			<h3>Five columns</h3>
+			<p>Display five columns per row.</p>
+			<div class=sl-grid>
+				<div class="sl-w-20 sl-tmono">.sl-w-20</div>
+				<div class="sl-w-20 sl-tmono">.sl-w-20</div>
+				<div class="sl-w-20 sl-tmono">.sl-w-20</div>
+				<div class="sl-w-20 sl-tmono">.sl-w-20</div>
+				<div class="sl-w-20 sl-tmono">.sl-w-20</div>
+			</div>
+			<h3>Four columns</h3>
+			<p>Display four columns per row.</p>
+			<div class=sl-grid>
+				<div class="sl-w-25 sl-tmono">.sl-w-25</div>
+				<div class="sl-w-25 sl-tmono">.sl-w-25</div>
+				<div class="sl-w-25 sl-tmono">.sl-w-25</div>
+				<div class="sl-w-25 sl-tmono">.sl-w-25</div>
+			</div>
+			<h3>Three columns</h3>
+			<div class=sl-grid>
+				<div class="sl-w-third sl-tmono">.sl-w-third</div>
+				<div class="sl-w-third sl-tmono">.sl-w-third</div>
+				<div class="sl-w-third sl-tmono">.sl-w-third</div>
+				<div class=sl-clear></div>
+				<div class="sl-w-third sl-tmono">.sl-w-third</div>
+				<div class="sl-w-third sl-tmono">.sl-w-third</div>
+				<div class="sl-w-third sl-tmono">.sl-w-third</div>
 			</div>
 		</div>
-		<div class=sl-w-50>
-			<div class=sl-block>
-				<h3>Six columns</h3>
-				<p>Display six columns per row.</p>
-				<div class=sl-grid>
-					<div class="sl-w-sixth sl-tmono">.sl-w-sixth</div>
-					<div class="sl-w-sixth sl-tmono">.sl-w-sixth</div>
-					<div class="sl-w-sixth sl-tmono">.sl-w-sixth</div>
-					<div class="sl-w-sixth sl-tmono">.sl-w-sixth</div>
-					<div class="sl-w-sixth sl-tmono">.sl-w-sixth</div>
-					<div class="sl-w-sixth sl-tmono">.sl-w-sixth</div>
-				</div>
-				<h3>Five columns</h3>
-				<p>Display five columns per row.</p>
-				<div class=sl-grid>
-					<div class="sl-w-20 sl-tmono">.sl-w-20</div>
-					<div class="sl-w-20 sl-tmono">.sl-w-20</div>
-					<div class="sl-w-20 sl-tmono">.sl-w-20</div>
-					<div class="sl-w-20 sl-tmono">.sl-w-20</div>
-					<div class="sl-w-20 sl-tmono">.sl-w-20</div>
-				</div>
-				<h3>Four columns</h3>
-				<p>Display four columns per row.</p>
-				<div class=sl-grid>
-					<div class="sl-w-25 sl-tmono">.sl-w-25</div>
-					<div class="sl-w-25 sl-tmono">.sl-w-25</div>
-					<div class="sl-w-25 sl-tmono">.sl-w-25</div>
-					<div class="sl-w-25 sl-tmono">.sl-w-25</div>
-				</div>
-				<h3>Three columns</h3>
-				<div class=sl-grid>
-					<div class="sl-w-third sl-tmono">.sl-w-third</div>
-					<div class="sl-w-third sl-tmono">.sl-w-third</div>
-					<div class="sl-w-third sl-tmono">.sl-w-third</div>
-					<div class=sl-clear></div>
-					<div class="sl-w-third sl-tmono">.sl-w-third</div>
-					<div class="sl-w-third sl-tmono">.sl-w-third</div>
-					<div class="sl-w-third sl-tmono">.sl-w-third</div>
-				</div>
+	</div>
+	<div class=sl-clear></div>
+	<div class=sl-w-50>
+		<div class=sl-block>
+			<h3>Two columns</h3>
+			<div class=sl-grid>
+				<div class="sl-w-50 sl-tmono">.sl-w-50</div>
+				<div class="sl-w-50 sl-tmono">.sl-w-50</div>
+			</div>
+			<h3>Custom ratio's</h3>
+			<div class=sl-grid>
+				<div class="sl-w-2thirds sl-tmono" style="background:#ccc;">.sl-w-2thirds</div>
+				<div class="sl-w-third sl-tmono" style="background:#ddd;">.sl-w-third</div>
+			</div>
+			<div class=sl-grid>
+				<div class="sl-w-60 sl-tmono" style="background:#ccc;">.sl-w-60</div>
+				<div class="sl-w-20 sl-tmono" style="background:#ddd;">.sl-w-20</div>
+				<div class="sl-w-20 sl-tmono" style="background:#ccc;">.sl-w-20</div>
+			</div>
+			<div class=sl-grid>
+				<div class="sl-w-20 sl-tmono" style="background:#ccc;">.sl-w-60</div>
+				<div class="sl-w-60 sl-tmono" style="background:#ddd;">.sl-w-20</div>
+				<div class="sl-w-20 sl-tmono" style="background:#ccc;">.sl-w-20</div>
+			</div>
+			<h3>Centering grids with a custom width</h3>
+			<p>
+				The following grid uses the following class:
+				<code>sl-grid sl-mid sl-w-75</code>.
+			</p>
+			<div class="sl-grid sl-mid sl-w-75">
+				<div class="sl-w-50 sl-tmono" style="background:#ccc;">.sl-w-50</div>
+				<div class="sl-w-50 sl-tmono" style="background:#ddd;">.sl-w-50</div>
 			</div>
 		</div>
-		<div class=sl-clear></div>
-		<div class=sl-w-50>
-			<div class=sl-block>
-				<h3>Two columns</h3>
-				<div class=sl-grid>
-					<div class="sl-w-50 sl-tmono">.sl-w-50</div>
-					<div class="sl-w-50 sl-tmono">.sl-w-50</div>
-				</div>
-				<h3>Custom ratio's</h3>
-				<div class=sl-grid>
-					<div class="sl-w-2thirds sl-tmono" style="background:#ccc;">.sl-w-2thirds</div>
-					<div class="sl-w-third sl-tmono" style="background:#ddd;">.sl-w-third</div>
-				</div>
-				<div class=sl-grid>
-					<div class="sl-w-60 sl-tmono" style="background:#ccc;">.sl-w-60</div>
-					<div class="sl-w-20 sl-tmono" style="background:#ddd;">.sl-w-20</div>
-					<div class="sl-w-20 sl-tmono" style="background:#ccc;">.sl-w-20</div>
-				</div>
-				<div class=sl-grid>
-					<div class="sl-w-20 sl-tmono" style="background:#ccc;">.sl-w-60</div>
-					<div class="sl-w-60 sl-tmono" style="background:#ddd;">.sl-w-20</div>
-					<div class="sl-w-20 sl-tmono" style="background:#ccc;">.sl-w-20</div>
-				</div>
-				<h3>Centering grids with a custom width</h3>
+	</div>
+	<div class=sl-w-50>
+		<div class=sl-block>
+			<h3 class=sl-tmono>.sl-clear</h3>
+			To clear a row in a grid, add an <code>sl-clear</code> element
+			to the grid at the point that should break the row on large
+			screens.
+			<h3 class=sl-tmono>.sl-floatr, .sl-floatl</h3>
+			Float element easily using <code>sl-floatr</code> (right) or
+			<code>sl-floatl</code> (left). Use <code>sl-clear</code> to
+			clear the floating elements.
+			<br><br>
+			<div class=sl-clear>
 				<p>
-					The following grid uses the following class:
-					<code>sl-grid sl-mid sl-w-75</code>.
+					<span class=sl-floatl><code>.sl-floatl</code></span>
+					<span class=sl-floatr><code>.sl-floatr</code></span>
 				</p>
-				<div class="sl-grid sl-mid sl-w-75">
-					<div class="sl-w-50 sl-tmono" style="background:#ccc;">.sl-w-50</div>
-					<div class="sl-w-50 sl-tmono" style="background:#ddd;">.sl-w-50</div>
-				</div>
 			</div>
 		</div>
-		<div class=sl-w-50>
-			<div class=sl-block>
-				<h3 class=sl-tmono>.sl-clear</h3>
-				To clear a row in a grid, add an <code>sl-clear</code> element
-				to the grid at the point that should break the row on large
-				screens.
-				<h3 class=sl-tmono>.sl-floatr, .sl-floatl</h3>
-				Float element easily using <code>sl-floatr</code> (right) or
-				<code>sl-floatl</code> (left). Use <code>sl-clear</code> to
-				clear the floating elements.
-				<br><br>
-				<div class=sl-clear>
-					<p>
-						<span class=sl-floatl><code>.sl-floatl</code></span>
-						<span class=sl-floatr><code>.sl-floatr</code></span>
-					</p>
-				</div>
-			</div>
-		</div>
-		<div class=sl-clear></div>
-		<div class=sl-w-50>
-			<div class=sl-block>
-				<h3 class=sl-tmono>.sl-grid-medium</h3>
-				To create a less aggressive grid (that stacks only on mobile),
-				add an <code>sl-grid-medium</code> to the grid.
-				<div class="sl-grid sl-grid-medium">
-					<div class=sl-w-third>33.333%</div>
-					<div class=sl-w-third>33.333%</div>
-					<div class=sl-w-third>33.333%</div>
-				</div>
+	</div>
+	<div class=sl-clear></div>
+	<div class=sl-w-50>
+		<div class=sl-block>
+			<h3 class=sl-tmono>.sl-grid-medium</h3>
+			To create a less aggressive grid (that stacks only on mobile),
+			add an <code>sl-grid-medium</code> to the grid.
+			<div class="sl-grid sl-grid-medium">
+				<div class=sl-w-third>33.333%</div>
+				<div class=sl-w-third>33.333%</div>
+				<div class=sl-w-third>33.333%</div>
 			</div>
 		</div>
 	</div>

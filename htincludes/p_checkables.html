@@ -1,68 +1,70 @@
-<div class="sl-mwidth sl-mid">
-	<div class=sl-grid>
-		<div class=sl-w-50>
-			<div class=sl-block>
-				<h3>Radio groups</h3>
-				<p>Enhance radio-buttons by adding the <code>sl-radio</code> class to
-				the <code>input type=radio</code> and the <code>sl-lbl</code> class
-				to the <code>label</code> right after it.</p>
-				<p>
-					Source of radio button group below:
-					<pre>
+<div class=sl-grid>
+	<div class=sl-w-50>
+		<div class=sl-block>
+			<h3>Radio groups</h3>
+			<p>Enhance radio-buttons by adding the <code>sl-radio</code> class to
+			the <code>input type=radio</code> and the <code>sl-lbl</code> class
+			to the <code>label</code> right after it.</p>
+			<p>
+				Source of radio button group below:
+				<pre>
 &lt;input class=sl-radio id=radio1 type=radio name=radios value=1 checked&gt;
 &lt;label class=sl-lbl for=radio1&gt;Radio 1&lt;/label&gt;
 &lt;input class=sl-radio id=radio2 type=radio name=radios value=2&gt;
 &lt;label class=sl-lbl for=radio2&gt;Radio 2&lt;/label&gt;
 &lt;input class=sl-radio id=radio3 type=radio name=radios value=3 disabled&gt;
 &lt;label class=sl-lbl for=radio3&gt;Radio 3&lt;/label&gt;
-					</pre>
-				</p>
-				<input class=sl-radio id=radio1 type=radio name=radios value=1 checked>
-				<label class=sl-lbl for=radio1>Radio 1</label>
-				<input class=sl-radio id=radio2 type=radio name=radios value=2>
-				<label class=sl-lbl for=radio2>Radio 2</label>
-				<input class=sl-radio id=radio3 type=radio name=radios value=3 disabled>
-				<label class=sl-lbl for=radio3>Radio 3</label>
-			</div>
+				</pre>
+			</p>
+			<input class=sl-radio id=radio1 type=radio name=radios value=1 checked>
+			<label class=sl-lbl for=radio1>Radio 1</label>
+			<input class=sl-radio id=radio2 type=radio name=radios value=2>
+			<label class=sl-lbl for=radio2>Radio 2</label>
+			<input class=sl-radio id=radio3 type=radio name=radios value=3 disabled>
+			<label class=sl-lbl for=radio3>Radio 3</label>
 		</div>
-		<div class=sl-w-50>
-			<div class=sl-block>
-				<h3>Checkboxes</h3>
-				<p>Checkboxes work the same as radio buttons, but they use the class
-				<code>sl-checkbox</code> instead of <code>sl-radio</code>.</p>
-				<input class=sl-checkbox id=checkbox1 type=checkbox name=test checked>
-				<label class="sl-lbl sl-w-auto" for=checkbox1>Checkbox 1</label>
-				<input class=sl-checkbox id=checkbox2 type=checkbox name=test>
-				<label class="sl-lbl sl-w-auto" for=checkbox2>Checkbox 2</label>
-				<input class=sl-checkbox id=checkbox3 type=checkbox name=test>
-				<label class="sl-lbl sl-w-auto" for=checkbox3>Checkbox 3</label>
-				<input class=sl-checkbox id=checkbox4 type=checkbox name=test disabled>
-				<label class="sl-lbl sl-w-auto" for=checkbox4>Checkbox 4</label>
-				<input class=sl-checkbox id=checkbox5 type=checkbox name=test checked>
-				<label class="sl-lbl sl-w-auto" for=checkbox5>Checkbox 5</label>
-				
-				<h3>Switches</h3>
-				<p>Switches are <code>&lt;select&gt;</code> input's with only
-				two options. They are only enhanced to switches from script.</p>
-				<pre>
+	</div>
+	<div class=sl-w-50>
+		<div class=sl-block>
+			<h3>Checkboxes</h3>
+			<p>Checkboxes work the same as radio buttons, but they use the class
+			<code>sl-checkbox</code> instead of <code>sl-radio</code>.</p>
+			<input class=sl-checkbox id=checkbox1 type=checkbox name=test checked>
+			<label class="sl-lbl sl-w-auto" for=checkbox1>Checkbox 1</label>
+			<input class=sl-checkbox id=checkbox2 type=checkbox name=test>
+			<label class="sl-lbl sl-w-auto" for=checkbox2>Checkbox 2</label>
+			<input class=sl-checkbox id=checkbox3 type=checkbox name=test>
+			<label class="sl-lbl sl-w-auto" for=checkbox3>Checkbox 3</label>
+			<input class=sl-checkbox id=checkbox4 type=checkbox name=test disabled>
+			<label class="sl-lbl sl-w-auto" for=checkbox4>Checkbox 4</label>
+			<input class=sl-checkbox id=checkbox5 type=checkbox name=test checked>
+			<label class="sl-lbl sl-w-auto" for=checkbox5>Checkbox 5</label>
+			
+			<h3>Switches</h3>
+			<p>Switches are <code>&lt;select&gt;</code> input's with only
+			two options. They are only enhanced to switches from script.</p>
+			<pre>
 &lt;select class=sl-switch&gt;
 &nbsp;&nbsp;&lt;option class=sl-switch-off value=0&gt;Off option&lt;/option&gt;
 &nbsp;&nbsp;&lt;option class=sl-switch-on value=1&gt;On option&lt;/option&gt;
 &lt;/select&gt;
-				</pre>
-				<select class=sl-switch>
-					<option class=sl-switch-on value=1>ON Label</option>
-					<option class=sl-switch-off value=0>OFF Label</option>
-				</select>
-				<select class=sl-switch>
-					<option class=sl-switch-off value=0>No</option>
-					<option class=sl-switch-on value=1>Yes</option>
-				</select>
-				<select class=sl-switch disabled>
-					<option value=1>Disabled YES</option>
-					<option value=0>Disabled NO</option>
-				</select>
-			</div>
+			</pre>
+			<select class=sl-switch>
+				<option class=sl-switch-on value=1>ON Label</option>
+				<option class=sl-switch-off value=0>OFF Label</option>
+			</select>
+			<select class=sl-switch>
+				<option class=sl-switch-off value=0>No</option>
+				<option class=sl-switch-on value=1>Yes</option>
+			</select>
+			<select class=sl-switch disabled>
+				<option value=1>Disabled YES</option>
+				<option value=0>Disabled NO</option>
+			</select>
+			<select class="sl-switch sl-w-fill">
+				<option class=sl-switch-off value=0>No (.sl-w-fill)</option>
+				<option class=sl-switch-on value=1>Yes (.sl-w-fill)</option>
+			</select>
 		</div>
 	</div>
 </div>

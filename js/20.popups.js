@@ -27,8 +27,11 @@ var $lastFocus;
  */
 var openPopup = function (opts) {
 	if (typeof opts !== "object") { opts = { }; }
-	// Remove any previously active popup
-	closePopup();
+	// remove any currently active popup, if this is a popup opened from
+	// another popup the $lastFocus element should be preserved
+	var $keepLastFocus = $lastFocus;
+	closePopup(); // sets $lastFocus to undefined
+	$lastFocus = $keepLastFocus;
 	// Change the URL hash so the back button can be used to exit popups
 	if (!location.href.endsWith("#sl-pop")) { location.hash = "#sl-pop"; }
 	// If popup is in need of styling, add the '.sl-popstyled' class as a default styleable popup class
@@ -64,6 +67,7 @@ var closePopup = function () {
 	Slender.restoreViews($oldPopup);
 	$oldPopup.remove();
 	if ($lastFocus) { $lastFocus.focus(); }
+	$lastFocus = undefined;
 };
 
 var getScreenWidthEms = function () {
@@ -172,6 +176,20 @@ $(document).on("submit", "form.sl-popopen", function (e) {
 	$lastFocus = $($(this).find(":submit")[0]);
 	// Open a popup (closes any previous popups)
 	openPopup(popupOpts);
+});
+
+// yield data to the opening element
+$(document).on("click", ".sl-popyield", function (e) {
+	if (!$lastFocus) { return; }
+	var popyielddata = $(this).attr("data-popyield");
+	if (typeof popyielddata !== "string") { popyielddata = ""; }
+	var popyieldtype = $(this).attr("data-popyield-type");
+	if (typeof popyieldtype !== "string") { popyieldtype = ""; }
+	$lastFocus.trigger({
+		type: "slpopyield",
+		popupYield: popyielddata,
+		popupYieldType: popyieldtype
+	});
 });
 
 // prevent following the .sl-popclose links when placed inside a popup

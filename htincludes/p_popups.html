@@ -1,64 +1,87 @@
-<div class="sl-mid sl-mwidth">
-	<div class=sl-block>
-		<h3>Popups and dialogs</h3>
-		<p>
-			Popups are UI elements that display another page within the current
-			page. Define a popup by adding the class <code>sl-popopen</code> to
-			an <code>A</code> tag with an <code>href</code> attribute. The
-			target page should contain an element called
-			<code>sl-popclose</code> to close the popup from the popup itself.
-			When Javascript is disabled, or when the screen is too small, the
-			link is followed.
-		</p>
-		<p>Specify on which screens a popup should be opened by adding the
-		<code>data-screen-width</code> attribute. This attribute takes either a
-		literal dimension (in ems or pixels) or the keywords <code>medium</code>
-		and <code>large</code>.</p>
-		<p>An alternative popup-only URL to follow can be specified using the
-		<code>data-pophref</code> attribute.</p>
-		<a href=popup.html
-			class=sl-popopen
-			data-pophref=popup-only.html
-			data-screen-width="large">
-			Opens popup on large screens only
-		</a><br>
-		<a href=popup.html
-			class=sl-popopen
-			data-pophref=popup-only.html
-			data-screen-width="medium">
-			Opens popup on medium-large screens only
-		</a><br>
-		<a href=popup.html
-			class=sl-popopen
-			data-pophref=popup-only.html
-			data-screen-width="20em">
-			Opens popup on screens > 20em
-		</a><br>
-		<a href=popup.html
-			class=sl-popopen
-			data-pophref=popup-only.html
-			data-screen-width="768px">
-			Opens popup on screens > 768px
-		</a><br>
-		<a href=popup.html
-			class=sl-popopen
-			data-pophref=popup-only.html>
-			Always opens popup
-		</a><br>
-	</div>
-	<div class=sl-block>
-		<h3>Submitting forms to popups</h3>
-		<p>
-			Add the class <code>sl-popopen</code> to a form to automatically submit
-			that form to a new popup (the default submit action is ignored). The
-			popups API will automatically use the <code>action</code> and
-			<code>method</code> attributes of the form to determine the request type
-			and URL.
-		</p>
-		<p>The <code>enctype</code> attribute is not supported.</p>
-		<form method=post action=popup.html class=sl-popopen>
-			<input class="sl-input sl-w-auto" placeholder="Input">
-			<button type=submit class=sl-btn>Submit</button>
-		</form>
-	</div>
+<div class=sl-block>
+	<h3>Popups and dialogs</h3>
+	<p>
+		Popups are UI elements that display another page within the current
+		page. Define a popup by adding the class <code>sl-popopen</code> to
+		an <code>A</code> tag with an <code>href</code> attribute. The
+		target page should contain an element called
+		<code>sl-popclose</code> to close the popup from the popup itself.
+		When Javascript is disabled, or when the screen is too small, the
+		link is followed.
+	</p>
+	<p>Specify on which screens a popup should be opened by adding the
+	<code>data-screen-width</code> attribute. This attribute takes either a
+	literal dimension (in ems or pixels) or the keywords <code>medium</code>
+	and <code>large</code>.</p>
+	<p>An alternative popup-only URL to follow can be specified using the
+	<code>data-pophref</code> attribute.</p>
+	<a href=popup.html
+		class=sl-popopen
+		data-pophref=popup-only.html
+		data-screen-width="large">
+		Opens popup on large screens only
+	</a><br>
+	<a href=popup.html
+		class=sl-popopen
+		data-pophref=popup-only.html
+		data-screen-width="medium">
+		Opens popup on medium-large screens only
+	</a><br>
+	<a href=popup.html
+		class=sl-popopen
+		data-pophref=popup-only.html
+		data-screen-width="20em">
+		Opens popup on screens > 20em
+	</a><br>
+	<a href=popup.html
+		class=sl-popopen
+		data-pophref=popup-only.html
+		data-screen-width="768px">
+		Opens popup on screens > 768px
+	</a><br>
+	<a href=popup.html
+		class=sl-popopen
+		data-pophref=popup-only.html>
+		Always opens popup
+	</a><br>
+</div>
+
+<div class=sl-block>
+	<h3>Sending data back from popups</h3>
+	<p>
+		You can send data from another popup using the <code>.sl-popyield</code>
+		class. Elements with this class send data back to the element that
+		opened the initial popup by triggering the <code>slpopyield</code>
+		event on it. The data sent is determined by the values of the
+		<code>@data-popyield</code> and <code>@data-popyield-type</code>
+		attributes (type is optional).
+	</p>
+	<p>
+		In a popup that allows "unselecting" items, the popup could yield data
+		of a different type to indicate a deselection (changing the value of
+		<code>@data-popyield-type</code> after selection).
+	</p>
+	<a href="popup-yield.html" class="sl-popopen yieldtome">Open popup</a>
+	<div class=allyields></div>
+</div>
+<script>
+$(".yieldtome").on("slpopyield", function (e) {
+	$(".allyields").append(e.popupYield, ", ", e.popupYieldType, ". ")
+});
+</script>
+
+<div class=sl-block>
+	<h3>Submitting forms to popups</h3>
+	<p>
+		Add the class <code>sl-popopen</code> to a form to automatically submit
+		that form to a new popup (the default submit action is ignored). The
+		popups API will automatically use the <code>action</code> and
+		<code>method</code> attributes of the form to determine the request type
+		and URL.
+	</p>
+	<p>The <code>enctype</code> attribute is not supported.</p>
+	<form method=post action=popup.html class=sl-popopen>
+		<input class="sl-input sl-w-auto" placeholder="Input">
+		<button type=submit class=sl-btn>Submit</button>
+	</form>
 </div>

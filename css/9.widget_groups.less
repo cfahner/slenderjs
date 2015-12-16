@@ -2,12 +2,16 @@
  * This is done to account for the 1*border-width each widget is moved to the
  * left to make their borders collapse. */
 .sl-widgetgroup-h {
-	display: inline-block;
 	margin-left: @sl-widget-border-width;
-	width: 100%;
 	.sl-clear();
 }
-.sl-widgetgroup-h, .sl-widgetgroup-v { vertical-align: middle; }
+.sl-widgetgroup-h, .sl-widgetgroup-v {
+	width: 100%;
+	display: inline-block;
+	vertical-align: middle;
+	margin-top: @sl-widget-margin-v;
+	margin-bottom: @sl-widget-margin-v;
+}
 .sl-widgetgroup-h.sl-w-auto { width: auto; }
 /* Do the reverse when the layout direction is 'rtl'. */
 [dir=rtl] .sl-widgetgroup-h, [dir=rtl].sl-widgetgroup-h {
@@ -24,6 +28,8 @@
 	position: relative;
 	float: left;
 	margin-left: -1 * @sl-widget-border-width;
+	margin-top: 0;
+	margin-bottom: 0;
 }
 /* Reverse the float direction and border collapse in a 'rtl' layout.
  * The widget classes are not needed here since we do not change "position". */
@@ -52,4 +58,10 @@
 /* Add a basic border around normally unbordered widgets to make them appear more connected */
 .sl-widgetgroup-h > .sl-lbl, .sl-widgetgroup-v > .sl-lbl {
 	border-color: @sl-input-border-color;
+}
+
+/** Nested widgetgroups */
+.sl-widgetgroup-v > .sl-widgetgroup-h {
+	margin-top: -1 * @sl-widget-border-width;
+	margin-bottom: 0;
 }

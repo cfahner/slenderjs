@@ -5,7 +5,7 @@
 /**
  * Template object for all flipswitches.
  */
-var $switchTemplate = $("<span class='sl-flat sl-switch-enh'>").append(
+var $switchTemplate = $("<span class='sl-flat sl-switch-enh' tabindex=0>").append(
 	$("<span class=sl-switch-flip>"), $("<span class=sl-switch-space>"),
 	$("<span class=sl-switch-text>")
 );
@@ -58,10 +58,16 @@ var switchEnhance = function ($switchSelect) {
 		valueOn: $on.val(), valueOff: $off.val(),
 		labelOn: $on.text(), labelOff: $off.text()
 	})
-	// Flip the switch when it is clicked (since it's actually a button it is
-	// clickable and keyboard accessible by default)
+	// Flip the switch when it is clicked
 	.click(function () {
 		if ($switchSelect.is(":enabled")) { switchFlip($switchSelect, $switchVisual); }
+	})
+	// Flip the switch when it is focused and SPACE or ENTER is pressed (has @tabindex)
+	.keyup(function (e) {
+		if (e.keyCode === 32 || e.keyCode === 13) {
+			e.preventDefault();
+			if ($switchSelect.is(":enabled")) { switchFlip($switchSelect, $switchVisual); }
+		}
 	});
 	// Flip the switch twice to make it display it's initial state
 	for (var i = 0; i < 2; i += 1) { switchFlip($switchSelect, $switchVisual); }

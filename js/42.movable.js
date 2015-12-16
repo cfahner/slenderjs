@@ -14,13 +14,17 @@ $(document).on("mousedown", ".sl-movable", function (e) {
 	// if the user is touching the current element, ignore movable events by mouse
 	if ($(this).data("sl-movable-touching") || !($(this).data("sl-moving"))) { return; }
 	var origin = $(this).data("sl-move-origin");
+	var previous = $(this).data("sl-move-previous");
 	$(this).trigger({
 		type: "slmove",
 		moveOriginX: origin.x,
 		moveOriginY: origin.y,
 		moveDiffX: event.screenX - origin.x,
-		moveDiffY: event.screenY - origin.y
+		moveDiffY: event.screenY - origin.y,
+		moveX: event.screenX - (previous ? previous.x : origin.x),
+		moveY: event.screenY - (previous ? previous.y : origin.y)
 	});
+	$(this).data("sl-move-previous", { x: e.screenX, y: e.screenY });
 	e.stopPropagation();
 	e.preventDefault();
 }).on("mouseup", ".sl-movable", function (e) {

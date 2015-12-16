@@ -44,16 +44,26 @@
 	font-size: 1.8em;
 	margin: 0 .33em;
 	font-weight: bold;
-	color: @sl-color-do;
 	border: @sl-widget-border-width solid darken(@sl-input-border-color, 5);
 	vertical-align: middle;
 	transition: border .1s, background .1s;
 }
 /* Make the radio box round. */
 .sl-radio + .sl-lbl:before { border-radius: 1000em !important; }
+
 /* Checkbox displays a checkmark when checked, radio displays a filled circle. */
-.sl-checkbox:checked + .sl-lbl:before { content: '✓'; }
-.sl-radio:checked + .sl-lbl:before { content: '•'; }
+.sl-checkbox:checked + .sl-lbl:before {
+	background-color: @sl-color-do;
+	border-color: @sl-color-do;
+	color: contrast(@sl-color-do, #000, #fff);
+	content: '✓';
+}
+.sl-radio:checked + .sl-lbl:before {
+	background-color: @sl-color-do;
+	border-color: @sl-color-do;
+	color: contrast(@sl-color-do, #000, #fff);
+	content: '•';
+}
 /* Cursor and opacity for disabled checkables. */
 .sl-checkbox:disabled + .sl-lbl, .sl-radio:disabled + .sl-lbl {
 	cursor: default;

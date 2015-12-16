@@ -13,15 +13,6 @@ A lightweight Javascript / CSS framework. Requires jQuery.
 * Support for styling HTML5 sectioning elements (IE8)
 * And other utilities
 
-### Detailed features
-
-* TODO
-
-## Planned
-
-* Media/flag objects (CSS utils)
-* Single page app support (history API's for working implementations only)
-
 ## License
 
 [MIT License](http://en.wikipedia.org/wiki/MIT_License).
